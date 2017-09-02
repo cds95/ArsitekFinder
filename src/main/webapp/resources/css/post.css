@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+#displaySkills {
+	margin-top: 10px;
+	margin-left: 20px;
+	height: 50px;
+}
+
+label, a {
+	font-family: 'Raleway', sans-serif;
+}
+
+#error {
+	color: red;
+	font-family: 'Raleway', sans-serif;
+}

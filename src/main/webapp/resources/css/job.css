@@ -1,0 +1,143 @@
+@CHARSET "UTF-8";
+
+body {
+	background: #E9E9E9;
+}
+
+.navbar {
+	margin-bottom: 0;
+}
+
+.head {
+	background: #59ADF8;
+	color: white;
+}
+
+.head .left {
+	float: left;
+	margin-left: 20px;
+}
+
+.head .right {
+	float: right;
+	margin-right: 50px;
+}
+
+.jumbotron {
+	background: white;
+	height: auto;
+	padding: 20px;
+}
+
+.left .available {
+	width: 70px;
+	height: 20px;
+	background: green;
+	border-radius: 25px;
+	color: white;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.description {
+	height: auto;
+	background: white;
+}
+
+.description h5 {
+	font-weight: bold;
+	font-size: 15pt;
+}
+
+.description p {
+	font-size: 13pt;
+}
+
+.noJobs {
+	margin-left: 50px;
+	border-style: solid;
+}
+
+#displaySkills {
+	height: 30px;
+	margin-top: 10px;
+}
+
+.skillsRequired {
+	height: auto;
+}
+
+.applicantList {
+	background: white;
+	border-style: solid;
+	border-width: 0.3pt;
+	border-color: #CDC7C5;
+	width: 1000px;
+	height: auto;
+	margin-left: 130px;
+	margin-top: 50px;
+}
+
+.applicantDisplay {
+	height: 200px;
+	width: 800px;
+}
+
+.applicantDisplay: hover {
+	background: black;
+}
+
+.userInfo {
+	float: left;
+	margin-top: 50px;
+	margin-left: 100px;
+	padding-left: 0
+}
+
+#userName {
+	font-size: 20pt;
+	margin-bottom: 0
+}
+
+#userLocatation {
+	margin-left: 0;
+	font-size: 14pt;
+}
+
+.applicantDisplay {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+hr {
+	width: 96%;
+	border-color: #CDC7C5;
+}
+
+.accept {
+	float: right;
+	margin-top: 130px;
+}
+
+.header {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.header h4 {
+	font-size: 18pt;
+}
+
+#noApplication {
+	text-align: center;
+}
+
+#fileInput {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+#error-message {
+	color: red;
+}

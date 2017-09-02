@@ -1,0 +1,75 @@
+@CHARSET "UTF-8";
+
+body {
+	background: white;
+}
+
+h2 {
+	text-align: center;
+}
+
+.basicUserInfo {
+	float: left;
+}
+
+.userInfo {
+	float: left;
+	margin-left: 130px;
+	margin-top: 40px;
+	background: white;
+	padding: 50px 90px 70px 50px;
+	height: 400px;
+	width: 600px;
+	border-style: solid;
+	border-width: 0.3pt;
+	border-color: #CDC7C5
+}
+
+.skills {
+	margin-top: 130px;
+}
+
+h4, input, a {
+	font-family: 'Raleway', sans-serif;
+}
+
+.right {
+	float: right;
+	border-style: solid;
+	border-width: 0.3pt;
+	border-color: #CDC7C5;
+	margin-right: 200px;
+	margin-top: 40px;
+	width: 300px;
+	height: 400px;
+	padding: 10px;
+}
+
+.aboutMe {
+	margin-top: 60px;
+}
+
+#displaySkills {
+	margin-top: 10px;
+}
+
+.edit {
+	float: right;
+}
+
+#basic-information {
+	padding: 0 250px 0 250px;
+	margin-top: 50px;
+}
+
+.btn {
+	margin-top: 10px;
+}
+
+input {
+	border-radius: 5px;
+}
+
+#display-err {
+	color: red;
+}
