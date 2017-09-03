@@ -32,7 +32,7 @@
       <%@ include file = "navbar.jsp" %>
       <div class="userInfo">
       	<c:if test="${sessionUserId eq selectUserId}">
-      		<a class="edit" href="http://localhost:8080/Freelance/edit.jsp"><span class="glyphicon glyphicon-pencil"></span></a>
+      		<a class="edit" href="http://localhost:8080/Freelance/edit"><span class="glyphicon glyphicon-pencil"></span></a>
       	</c:if>
          <div class="userInfoTop">
             <div class="basicUserInfo">

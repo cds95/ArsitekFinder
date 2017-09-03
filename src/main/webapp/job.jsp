@@ -111,7 +111,7 @@
                               <c:forEach items="${applicants}" var="app">
                                  <div class="applicantDisplay">
                                     <div class="userInfo">
-                                       <p id="userName"><a href="http://localhost:8080/Freelance/ProfilLoaderController?userId=${app.user.uid}">${app.user.first} ${app.user.last} </a></p>
+                                       <p id="userName"><a href="http://localhost:8080/Freelance/profile?uid=${app.user.uid}">${app.user.first} ${app.user.last} </a></p>
                                        <p id="userLocation">${app.user.location.city}, ${app.user.location.state}, ${app.user.location.country}</p>
                                        <c:forEach items="${app.user.skills}" var="skill">
                                           <div class="tag">${skill.skill}</div>

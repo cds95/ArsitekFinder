@@ -21,7 +21,7 @@
             </div>
             <ul class="nav navbar-nav">
                <li><a href="http://localhost:8080/Freelance/">Home</a></li>
-               <li> <a href="http://localhost:8080/Freelance/FinderController">Browse</a></li>
+               <li> <a href="http://localhost:8080/Freelance/jobs">Browse</a></li>
                <c:if test="${user.handle == 'admin'}">
                		<li> <a href="http://localhost:8080/Freelance/post">Post Job</a></li>
                </c:if>
@@ -36,11 +36,11 @@
                <c:otherwise>
                   <ul class="nav navbar-nav navbar-right">
                      <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> ${user.handle}</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> <span id="handle">${user.handle}</span></a>
                         <span class="caret"></span>
                         <ul class="dropdown-menu">
-                           <li><a href="http://localhost:8080/Freelance/ProfilLoaderController?userId=${user.uid}">My Profile</a></li>
-                           <li><a href="http://localhost:8080/Freelance/LogoutController">Logout</a></li>
+                           <li><a href="http://localhost:8080/Freelance/profile?handle=${user.handle}">My Profile</a></li>
+                           <li><a href="http://localhost:8080/Freelance/logout">Logout</a></li>
                         </ul>
                      </li>
                   </ul>

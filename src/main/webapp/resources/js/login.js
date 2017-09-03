@@ -8,7 +8,7 @@ $(document).ready(function() {
 		var pass = $('#password').val();
 		$.ajax({
 			type : "POST",
-			url : "LoginController",
+			url : "http://localhost:8080/Freelance/logging",
 			data : {
 				'username' : user,
 				'password' : pass
@@ -34,7 +34,7 @@ $(document).ready(function() {
 	 */
 	function showMessage(res) {
 		var target = document.getElementById("invalid-container");
-		if (res == 'FAIL') {
+		if (res == 'fail') {
 			if($('#invalid-container').children().length == 0) {
 				var div = document.createElement('div');
 				div.textContent = 'Invalid username or password';
@@ -42,7 +42,7 @@ $(document).ready(function() {
 				target.appendChild(div);
 			}
 		} else {
-			window.location='index.jsp';
+			window.location='http://localhost:8080/Freelance/';
 		}
 	}
 });

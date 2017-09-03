@@ -12,7 +12,7 @@ $(document).ready(function() {
 	$(".designer").click(function() {
 		var text = $(this).text();
 		$.ajax({
-			url: "FilterController",
+			url: "http://localhost:8080/Freelance/jobs/filter",
 			type: "GET",
 			data: {
 				type: text

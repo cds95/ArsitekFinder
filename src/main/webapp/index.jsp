@@ -49,46 +49,44 @@
          <div class="signup" id="drop">
             <div class="container-fluid">
                <h2>Create a Free Account Today</h2>
-               <form class="form-horizontal" method="post" action="RegistrationController">
+               <form class="form-horizontal">
                   <div class="form-group">
                      <div class="col-sm-1"> </div>
                      <label class="control-label col-sm-2">First Name:</label>
                      <div class="col-sm-7">
-                        <input type="text" class="form-control" name="first">
+                        <input type="text" class="form-control" id="first">
                      </div>
                   </div>
                   <div class="form-group">
                      <div class="col-sm-1"> </div>
                      <label class="control-label col-sm-2">Last Name:</label>
                      <div class="col-sm-7">
-                        <input type="text" class="form-control" name="last">
+                        <input type="text" class="form-control" id="last">
                      </div>
                   </div>
                   <div class="form-group">
                      <div class="col-sm-1"> </div>
                      <label class="control-label col-sm-2">Username:</label>
                      <div class="col-sm-7">
-                        <input type="text" class="form-control" name="handle">
+                        <input type="text" class="form-control" id="handle">
                      </div>
                   </div>
                   <div class="form-group">
                      <div class="col-sm-1"> </div>
                      <label class="control-label col-sm-2">Password:</label>
                      <div class="col-sm-7">
-                        <input type="password" class="form-control" name="password">
+                        <input type="password" class="form-control" id="password">
                      </div>
                   </div>
                   <div class="form-group">
                      <div class="col-sm-1"> </div>
                      <label class="control-label col-sm-2">Email:</label>
                      <div class="col-sm-7">
-                        <input type="text" class="form-control" name="email">
+                        <input type="text" class="form-control" id="email">
                      </div>
                   </div>
-                  <div class="form-group">
-                     <input type="submit" class="btn btn-default" value="Sign Up">
-                  </div>
                </form>
+               <button id="submit" class="btn btn-default">Sign Up</button>
             </div>
          </div>
       </c:if>

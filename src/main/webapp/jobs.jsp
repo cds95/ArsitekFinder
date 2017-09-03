@@ -63,7 +63,7 @@
                      <div class="panel panel-default work">
                         <div class="panel-heading workHead">
                            <div class="left">
-                              <h5><a href="http://localhost:8080/Freelance/JobController?jid=${job.jid}" id="jobTitle">${job.jobTitle}</a></h5>
+                              <h5><a href="http://localhost:8080/Freelance/job?jid=${job.jid}" id="jobTitle">${job.jobTitle}</a></h5>
                               <c:if test="${job.complete eq false}">
                               	<div class="available">Open</div>
                               </c:if>

@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$("#save").click(function() {
 		$.ajax({
 			type : "POST",
-			url : "SaveInfoController",
+			url : "http://localhost:8080/Freelance/edit/save",
 			data : {
 				'first' : $('#first').val(),
 				'last' : $('#last').val(),
@@ -22,12 +22,14 @@ $(document).ready(function() {
 		});
 	});
 	
+	var redirect = 'http://localhost:8080/Freelance/profile?handle=' + $('#handle').text(); //URL to redirect to
+	
 	/**
 	 * Show message when invalid save
 	 */
 	function showMessage(message) {
 		if(message == 'success') {
-			window.location='profile.jsp';
+			window.location = redirect;
 		} else {
 			var div = document.createElement('div');
 			div.textContent = "Please Enter a Valid Year";
@@ -55,7 +57,7 @@ $(document).ready(function() {
 				},
 				success : function(res) {
 					if(res == 'success') {
-						window.location='profile.jsp';
+						window.location = redirect;
 					} else {
 						createError("Wrong Password");
 					}
