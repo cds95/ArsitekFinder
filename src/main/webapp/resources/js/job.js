@@ -43,18 +43,6 @@ $(document).ready(function() {
 	    }
 	});
 	
-	var skills = [
-	              "AutoCAD",
-	              "3D Max",
-	              "Google Sketchup",
-	              "Illustrator",
-	              "Photoshop",
-	              "V-Ray"
-	              ];
-	$("#skill").autocomplete({
-		source: skills
-	});
-	
 	/**
 	 * Adds a skill tag onto the job screen.  Will produce an error if there are already 5
 	 * skills attached to the job
@@ -62,7 +50,7 @@ $(document).ready(function() {
 	$("#add").click(function() {
 		var skillString = $("#skill").val();
 		$.ajax({
-			url: "JobSkillUpdaterController",
+			url: "http://localhost:8080/Freelance/job/add",
 			type: "POST",
 			data: {
 				jid: $("#jid").text(),
@@ -91,6 +79,37 @@ $(document).ready(function() {
 	});
 	
 	/**
+	 * Removes a tag from the screen
+	 */
+	$(".remove").click(function() {
+		var remove = $(this);
+		removeTag(remove);
+	});
+	
+	/**
+	 * Removes a given tag
+	 */
+	function removeTag(rem) {
+		var remParent = rem.parent();
+		$.ajax({
+			url: "http://localhost:8080/Freelance/job/remove",
+			type: "POST",
+			data: {
+				id: remParent.attr('id'),
+				jid: $('#jid').text()
+			},
+			success: function(res){
+				if(res == 'success') {
+					remParent.remove();
+				} else {
+					createErrorMessage("Each job must have a minimum of one skill");
+				}
+				
+			}
+		});
+	}
+	
+	/**
 	 * Creates an error message and displays it onto the screen
 	 */
 	function createErrorMessage(msg) {
@@ -110,30 +129,5 @@ $(document).ready(function() {
 		div.setAttribute('class', 'tag');
 		div.setAttribute('id', tid);
 		return div;
-	}
-	
-	/**
-	 * Removes a tag from the screen
-	 */
-	$(".remove").click(function() {
-		var remove = $(this);
-		removeTag(remove);
-	});
-	
-	/**
-	 * Removes a given tag
-	 */
-	function removeTag(rem) {
-		var remParent = rem.parent();
-		$.ajax({
-			url: "RemoveTagController",
-			type: "POST",
-			data: {
-				target: 'job',
-				id: remParent.attr('id'),
-				jid: $('#jid').text()
-			}
-		});
-		remParent.remove();
 	}
 });

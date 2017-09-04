@@ -25,6 +25,7 @@
       <link href="css/universal.css" rel="stylesheet">
       <link href="css/prof.css" rel="stylesheet">
       <script src="js/profile.js"></script>
+      <script src="js/autocomplete.js"></script>
    </head>
    <body>
       <c:set var="sessionUserId" value="${user.uid}"></c:set>
@@ -38,23 +39,9 @@
             <div class="basicUserInfo">
                <h3>${selectedUser.first} ${selectedUser.last}</h3>
                <div id="userLocation">
-                  <c:choose>
-                     <c:when test="${empty selectedUser.location}">
-                        <div class="ui-widget">
-                           <c:if test="${sessionUserId eq selectUserId}">
-                           	  <select name="location" id="loc">
-							    <option value="Surabaya, East Java, Indonesia">Surabaya, East Java, Indonesia</option>
-							    <option value="Jakarta, DKI, Indonesia">Jakarta, DKI, Indonesia</option>
-							    <option value="Denpasar, Bali, Indonesia">Denpasar, Bali, Indonesia</option>
-							  </select>	
-                              <button type="submit" class="btn btn-default" id="updateLocation">Update</button>
-                           </c:if>
-                        </div>
-                     </c:when>
-                     <c:otherwise>
-                        <h4>${selectedUser.location.city}, ${selectedUser.location.state}, ${selectedUser.location.country}</h4>
-                     </c:otherwise>
-                  </c:choose>
+               		<c:if test="${selectedUser.location != null }">
+               			<h4>${selectedUser.location.city}, ${selectedUser.location.state}, ${selectedUser.location.country}</h4>
+               		</c:if>
                </div>
             </div>
          </div>
@@ -78,31 +65,25 @@
       </div>
       <div class="right">
       	<c:if test="${sessionUserId eq selectUserId}">
-      		<a class="edit" href="http://localhost:8080/Freelance/edit.jsp"><span class="glyphicon glyphicon-pencil"></span></a>
+      		<a class="edit" href="http://localhost:8080/Freelance/edit"><span class="glyphicon glyphicon-pencil"></span></a>
       	</c:if>
          <h4 id="contact-header">My Contact Information</h4>
          <p class="contactInfo">Email:   <a href="#">${selectedUser.email}</a></p>
          <p class="contactInfo">
          <div id="phoneNumber">
-            Phone Number:
-            <c:choose>
-               <c:when test="${empty selectedUser.phoneNumber}">
-                  <c:if test="${sessionUserId eq selectUserId}">
-                     <input type="text" id="number" placeholder="Enter Phone Number">
-                     <button type="submit" class="btn btn-default" id="updatePhone">Update</button>
-                  </c:if>
-               </c:when>
-               <c:otherwise>
-                  <a href="#">${selectedUser.phoneNumber}</a>
-               </c:otherwise>
-            </c:choose>
+         	Phone Number: 
+         	<c:if test="${selectedUser.phoneNumber != 0 }">
+         		${selectedUser.phoneNumber}
+         	</c:if>
          </div>
       	<hr>
       	<div class="education">
       		<h4>Education</h4>
       		<p>
       			${selectedUser.uni.name}<br>
-      			Class of ${selectedUser.graduationYear}
+      			<c:if test="${selectedUser.graduationYear != 0}">
+      				Class of ${selectedUser.graduationYear}
+      			</c:if>
       		</p>
       	</div>
       	<hr>

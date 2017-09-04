@@ -5,50 +5,6 @@
 $(document).ready(function() {
 	
 	/**
-	 * Updates the user's phone number
-	 */
-	$("#updatePhone").click(function() {
-		$.ajax({
-			url: "PhoneController",
-			type: "POST",
-			data: {
-				number: $("#number").val()
-			},
-			success: function() {
-				$("#phoneNumber").load("profile.jsp" + " #phoneNumber");
-			}
-		});
-	});
-	
-	/**
-	 * Updates the user's location
-	 */
-	$("#updateLocation").click(function() {
-		$.ajax({
-			url: "LocationUpdateController",
-			type: "POST",
-			data: {
-				location: $("#loc").val()
-			},
-			success: function() {
-				$("#userLocation").load("profile.jsp" + " #userLocation");
-			}
-		});
-	});
-	
-	var skills = [
-	              "AutoCAD",
-	              "3D Max",
-	              "Google Sketchup",
-	              "Illustrator",
-	              "Photoshop",
-	              "V-Ray"
-	              ];
-	$("#skill").autocomplete({
-		source: skills
-	});
-	
-	/**
 	 * Adds a tag to a users 
 	 */
 	$("#add").click(function() {
@@ -57,7 +13,7 @@ $(document).ready(function() {
 		var errMessage = document.createElement('div');
 		errMessage.setAttribute('id', 'error-message');
 		$.ajax({
-			url: "UpdateUserSkillsController",
+			url: "http://localhost:8080/Freelance/addusertag",
 			type: "POST",
 			data: {
 				skill: skillString
@@ -129,13 +85,14 @@ $(document).ready(function() {
 	function removeTag(rem) {
 		var remParent = rem.parent();
 		$.ajax({
-			url: "RemoveTagController",
+			url: "http://localhost:8080/Freelance/removeusertag",
 			type: "POST",
 			data: {
-				target: 'user',
 				id: remParent.attr('id')
+			},
+			success: function() {
+				remParent.remove();
 			}
 		});
-		remParent.remove();
 	}
 });

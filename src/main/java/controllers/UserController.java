@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +21,7 @@ import Data.DatabaseManager;
 import Data.Security;
 import Entities.Applicant;
 import Entities.Job;
+import Entities.Tags;
 import Entities.User;
 
 /**
@@ -72,5 +75,50 @@ public class UserController {
 		
 		request.getSession().setAttribute("user", user);
 		response.getWriter().write("success");
+	}
+	/**
+	 * Removes a user's skill
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	@RequestMapping(value="removeusertag", method = RequestMethod.POST)
+	public void removeUserTag(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
+		int tid = Integer.parseInt(request.getParameter("id"));
+		Tags tag = manager.getTag(tid);
+		User user = (User) request.getSession().getAttribute("user");
+		manager.deleteUserTag(user, tag);
+	}
+	
+	/**
+	 * Adds user tags
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("addusertag")
+	public void updateUserSkills(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
+		PrintWriter writer = response.getWriter();
+		User user = (User) request.getSession().getAttribute("user");
+		String skill = request.getParameter("skill");
+		Tags skills = manager.getTag(skill);
+		JSONObject json = new JSONObject();
+		response.setContentType("application/json");
+		if(user.getSkills().size() <= 5) {
+			manager.addUserSkill(user, skills);
+			json.put("status", "success");
+			json.put("tid", skills.getTid());
+		} else if(user.containsTag(skills)){
+			json.put("status", "contains");
+		} else {
+			json.put("status", "fail");
+		}
+		writer.print(json);
+		writer.flush();
 	}
 }

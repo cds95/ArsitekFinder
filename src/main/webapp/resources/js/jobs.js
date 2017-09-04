@@ -5,10 +5,9 @@
 $(document).ready(function() {
 	var jid = -1;
 	
-	$("#applicationForm").dialog({
-		autoOpen: false
-	});
-	
+	/**
+	 * Filters job
+	 */
 	$(".designer").click(function() {
 		var text = $(this).text();
 		$.ajax({
@@ -29,17 +28,19 @@ $(document).ready(function() {
 		});
 	});
 	
+	/**
+	 * Closes a job
+	 */
 	$(".remove").click(function() {
 		var jid = $(this).attr('id');
 		$.ajax({
-			url: "RemoveJobController",
+			url: "http://localhost:8080/Freelance/remove",
 			type: "POST",
 			data: {
 				type: 'close',
 				jid: jid
 			},
 			success: function() {
-				console.log("SUCCESS");
 				$(".jobContainer").load("jobs.jsp" + " .jobs");
 			}
 		});

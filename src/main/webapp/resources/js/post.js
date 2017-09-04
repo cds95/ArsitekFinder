@@ -1,22 +1,22 @@
 /**
- * 
+ * Defines the interactions that take place in the post job page
  */
 
 $(document).ready(
 		function() {
-			var jobs = [];
-			var counter = 0;
+			var tags = [];
+			var counter = 0; //Tracks how many skills have been added
 			
 			/**
 			 * Submits the job into the database.  User must submit at least one skill to post the job
 			 */
 			$("#sub").click(function() {
-				var str = jobs.toString();
+				var str = tags.toString();
 				if (str == "") {
 					createError("Please enter what skills are required for the job");
 				} else {
 					$.ajax({
-						url : "SearchController",
+						url : "http://localhost:8080/Freelance/postjob",
 						type : "GET",
 						data : {
 							description : $("#description").val(),
@@ -43,19 +43,6 @@ $(document).ready(
 				var target = document.getElementById("error");
 				target.append(div);
 			}
-
-			var availableTags = [ "Surabaya, East Java, Indonesia",
-					"Jakarta, DKI, Indonesia", "Medan, Sumatra, Indonesia",
-					"Bandung, West Java, Indonesia", ];
-			$("#loc").autocomplete({
-				source : availableTags
-			});
-
-			var skills = [ "AutoCAD", "3D Max", "Google Sketchup",
-					"Illustrator", "Photoshop", "V-Ray" ];
-			$("#skill").autocomplete({
-				source : skills
-			});
 			
 			/**
 			 * Adds a tag to the screen.  Creates an error when the user tries to add more
@@ -75,19 +62,21 @@ $(document).ready(
 						removal.remove();
 						counter = counter - 1;
 						removeFromArray(removal.text());
-						console.log(jobs.toString());
 					};
 					div.appendChild(child);
 					
 					var target = document.getElementById("displaySkills");
 					target.appendChild(div);
-					jobs.push(skillString);
+					tags.push(skillString);
 					counter = counter + 1;
 				} else {
 					createError("You Can Only Add a Maximum of 5 Skills");
 				}
 			});
 			
+			/**
+			 * Removes a tag when it it's remove button is clicked
+			 */
 			$(".remove").click(function() {
 				var remove = $(this).parent();
 				remove.remove();
@@ -97,9 +86,9 @@ $(document).ready(
 			 * Removes a skill from the job array
 			 */
 			function removeFromArray(skill) {
-				for(var i = 0; i < jobs.length; i++) {
-					if(jobs[i] == skill) {
-						jobs.splice(i, 1);
+				for(var i = 0; i < tags.length; i++) {
+					if(tags[i] == skill) {
+						tags.splice(i, 1);
 					}
 				}
 			}

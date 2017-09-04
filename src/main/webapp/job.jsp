@@ -24,6 +24,7 @@
       <link href="css/universal.css" rel="stylesheet">
       <link href="css/job.css" rel="stylesheet">
       <script src="js/job.js"></script>
+      <script src="js/autocomplete.js"></script>
    </head>
    <body>
       <c:set var="userJob" value="${job.employer}"/>

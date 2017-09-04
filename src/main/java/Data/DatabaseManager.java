@@ -180,6 +180,16 @@ public class DatabaseManager {
 		query.setParameter("city", city);
 		return (Location) query.list().get(0);
 	}
+	
+	/**
+	 * Returns a list of all the tags
+	 * @return
+	 */
+	public List<Tags> getTags() {
+		String hql = "From Tags";
+		Query query = this.session.createQuery(hql);
+		return query.list();
+	}
 
 	/**
 	 * Returns a Tag object according to the tag(skill) name

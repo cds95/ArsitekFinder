@@ -26,6 +26,7 @@
       <link href="css/universal.css" rel="stylesheet">
       <link href="css/post.css" rel="stylesheet">
       <script src="js/post.js"></script>
+      <script src="js/autocomplete.js"></script>
    </head>
    <body>
       <%@ include file = "navbar.jsp" %>

@@ -29,7 +29,7 @@ public class EditPageController {
 	 * @param session
 	 * @param loc
 	 */
-	@RequestMapping("update-loc")
+	@RequestMapping(value="/updateloc", method = RequestMethod.POST)
 	public void updateLocation(HttpSession session, @RequestParam("location") String loc) {
 		String[] info = loc.split(",", 2);
 		String city = info[0];
