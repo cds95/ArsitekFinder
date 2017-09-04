@@ -40,7 +40,7 @@
                <a href="http://localhost:8080/Freelance/login.jsp">Go to Login Page</a>
             </c:when>
             <c:otherwise>
-               <form action="SignupController" enctype="multipart/form-data" method="post" id="applyForm">
+               <form action="registerjob" enctype="multipart/form-data" method="post" id="applyForm">
                	  <input type="hidden" name="${job.jid}">
                	  <label>Work Sample</label>
                   <input type="file" id="fileInput" name="selectedFile" multiple size="50">

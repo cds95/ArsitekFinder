@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -9,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import Data.DatabaseManager;
+import Data.FileManager;
 import Data.Security;
 import Entities.Applicant;
 import Entities.Job;
@@ -153,6 +159,54 @@ public class JobsController {
 		}
 	}
 	
+	/**
+	 * Registers a user to a job
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/registerjob")
+	public ModelAndView registerForJob(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		User user = (User) request.getSession().getAttribute("user");
+		try {
+			this.saveFile(user, request, FileManager.WORKSAMPLEFILEPATH, FileManager.SAVEDPORTPATH);
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("applyConfirm.jsp");
+			return mv;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	/**
+	 * Saves a file to the designated folder path
+	 * @param request
+	 * @param fileServerLoc
+	 * @param fileFolderPath
+	 * @throws Exception
+	 */
+	public void saveFile(User user, HttpServletRequest request, String fileServerLoc, String fileFolderPath) throws Exception {
+		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
+		if(manager == null) {
+			manager = new DatabaseManager(); // Takes care of case when this is first page user visits
+		}
+		ServletFileUpload sfu = new ServletFileUpload(new DiskFileItemFactory());
+		List<FileItem> files = sfu.parseRequest(request);
+		FileItem f1 = files.get(0);
+		int jid = Integer.parseInt(f1.getFieldName());
+		FileItem file = files.get(1);
+		String fileName = file.getName();
+		if(FileManager.containsSpace(fileName)) {
+			fileName = FileManager.formatter(fileName);
+		}
+		fileFolderPath += fileName;
+		fileServerLoc += fileName;
+		file.write(new File(fileServerLoc));
+		Job job = manager.getJob(jid);
+		manager.registerUser(user, job, fileFolderPath);
+	}
 	
 	/**
 	 * Creates a new job entity
@@ -171,4 +225,5 @@ public class JobsController {
 		job.setComplete(false);
 		return job;
 	}
+	
 }
