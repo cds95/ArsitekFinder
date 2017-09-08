@@ -2,6 +2,7 @@
 
 .jumbotron {
 	height: 500px;
+	padding: 0;
 	background-image: url("http://llidesign.co.uk/assets/img/slider-img/Bishopswood%20-%20Contemporary%20Kitchen%20and%20dining%20room.jpg");
 	background-size: cover;
 	background-position: 10%;
@@ -13,9 +14,10 @@
 
 .information {
 	background: rgba(0, 0, 0, 0.5);
-	width: 450px;
-	height: 300px;
-	margin-left: 370px;
+	width: 100%;
+	height: 100%;
+	display: block;
+	margin: 0 auto;
 	padding: 50px;
 }
 
