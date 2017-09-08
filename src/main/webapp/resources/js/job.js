@@ -50,7 +50,7 @@ $(document).ready(function() {
 	$("#add").click(function() {
 		var skillString = $("#skill").val();
 		$.ajax({
-			url: "http://localhost:8080/Freelance/job/add",
+			url: "https://jh-studio.herokuapp.com/job/add",
 			type: "POST",
 			data: {
 				jid: $("#jid").text(),
@@ -92,7 +92,7 @@ $(document).ready(function() {
 	function removeTag(rem) {
 		var remParent = rem.parent();
 		$.ajax({
-			url: "http://localhost:8080/Freelance/job/remove",
+			url: "https://jh-studio.herokuapp.com/job/remove",
 			type: "POST",
 			data: {
 				id: remParent.attr('id'),

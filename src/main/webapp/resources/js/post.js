@@ -16,7 +16,7 @@ $(document).ready(
 					createError("Please enter what skills are required for the job");
 				} else {
 					$.ajax({
-						url : "http://localhost:8080/Freelance/postjob",
+						url : "https://jh-studio.herokuapp.com/postjob",
 						type : "GET",
 						data : {
 							description : $("#description").val(),

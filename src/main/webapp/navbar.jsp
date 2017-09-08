@@ -20,8 +20,8 @@
                <a class="navbar-brand" href="#">JobFinder</a>
             </div>
             <ul class="nav navbar-nav">
-               <li><a href="http://localhost:8080/Freelance/">Home</a></li>
-               <li> <a href="http://localhost:8080/Freelance/jobs">Browse</a></li>
+               <li><a href=https://jh-studio.herokuapp.com">Home</a></li>
+               <li> <a href="https://jh-studio.herokuapp.com/jobs">Browse</a></li>
                <c:if test="${user.handle == 'admin'}">
                		<li> <a href="https://jh-studio.herokuapp.com/post">Post Job</a></li>
                </c:if>
@@ -29,8 +29,8 @@
             <c:choose>
                <c:when test="${empty user}">
                   <ul class="nav navbar-nav navbar-right">
-                     <li><a href="http://localhost:8080/Freelance/#drop"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                     <li><a href="http://localhost:8080/Freelance/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                     <li><a href="https://jh-studio.herokuapp.com#drop"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                     <li><a href="https://jh-studio.herokuapp.com/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                   </ul>
                </c:when>
                <c:otherwise>
@@ -39,8 +39,8 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> <span id="handle">${user.handle}</span></a>
                         <span class="caret"></span>
                         <ul class="dropdown-menu">
-                           <li><a href="http://localhost:8080/Freelance/profile?handle=${user.handle}">My Profile</a></li>
-                           <li><a href="http://localhost:8080/Freelance/logout">Logout</a></li>
+                           <li><a href="https://jh-studio.herokuapp.com/profile?handle=${user.handle}">My Profile</a></li>
+                           <li><a href="https://jh-studio.herokuapp.com/logout">Logout</a></li>
                         </ul>
                      </li>
                   </ul>

@@ -15,7 +15,7 @@ $(document).ready(function() {
 		var handle = $('#handle').val();
 		$.ajax({
 			type : "POST",
-			url : "http://localhost:8080/Freelance/register",
+			url : "https://jh-studio.herokuapp.com/register",
 			data : {
 				'first' : $('#first').val(),
 				'last' : $('#last').val(),
@@ -25,7 +25,7 @@ $(document).ready(function() {
 			},
 			success : function(res) {
 				if(res == 'success') {
-					window.location = "http://localhost:8080/Freelance/profile?handle=" + handle;
+					window.location = "https://jh-studio.herokuapp.com/profile?handle=" + handle;
 				}
 				
 			}

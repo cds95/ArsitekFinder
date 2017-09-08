@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$("#save").click(function() {
 		$.ajax({
 			type : "POST",
-			url : "http://localhost:8080/Freelance/edit/save",
+			url : "https://jh-studio.herokuapp.com/edit/save",
 			data : {
 				'first' : $('#first').val(),
 				'last' : $('#last').val(),
@@ -22,7 +22,7 @@ $(document).ready(function() {
 		});
 	});
 	
-	var redirect = 'http://localhost:8080/Freelance/profile?handle=' + $('#handle').text(); //URL to redirect to
+	var redirect = 'https://jh-studio.herokuapp.com/profile?handle=' + $('#handle').text(); //URL to redirect to
 	
 	/**
 	 * Show message when invalid save

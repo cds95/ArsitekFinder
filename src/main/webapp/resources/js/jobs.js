@@ -11,7 +11,7 @@ $(document).ready(function() {
 	$(".designer").click(function() {
 		var text = $(this).text();
 		$.ajax({
-			url: "http://localhost:8080/Freelance/jobs/filter",
+			url: "https://jh-studio.herokuapp.com/jobs/filter",
 			type: "GET",
 			data: {
 				type: text
@@ -34,7 +34,7 @@ $(document).ready(function() {
 	$(".remove").click(function() {
 		var jid = $(this).attr('id');
 		$.ajax({
-			url: "http://localhost:8080/Freelance/remove",
+			url: "https://jh-studio.herokuapp.com/remove",
 			type: "POST",
 			data: {
 				type: 'close',

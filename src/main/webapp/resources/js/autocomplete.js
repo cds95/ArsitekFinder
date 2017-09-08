@@ -11,7 +11,7 @@ $(document).ready(function() {
 	$("#skill").autocomplete({
 		source: function(req, res) {
 			$.ajax({
-				url: "http://localhost:8080/Freelance/gettags",
+				url: "https://jh-studio.herokuapp.com/gettags",
 				type: "GET",
 				success: function(data) {
 					var tags = data.tags;

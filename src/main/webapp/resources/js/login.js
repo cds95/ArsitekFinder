@@ -8,7 +8,7 @@ $(document).ready(function() {
 		var pass = $('#password').val();
 		$.ajax({
 			type : "POST",
-			url : "http://localhost:8080/Freelance/logging",
+			url : "https://jh-studio.herokuapp.com/logging",
 			data : {
 				'username' : user,
 				'password' : pass
@@ -42,7 +42,7 @@ $(document).ready(function() {
 				target.appendChild(div);
 			}
 		} else {
-			window.location='http://localhost:8080/Freelance/';
+			window.location='https://jh-studio.herokuapp.com';
 		}
 	}
 });
