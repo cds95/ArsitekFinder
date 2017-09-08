@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: 'Raleway', sans-serif;
+}
+
+.remove {
+	color: white;
+	margin-left: 5px;
+}
+
+.remove:hover {
+	color: red;
+	cursor: pointer;
+}
+
+.tag {
+	float: left;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    height: 40px;
+    width: 110px;
+    text-align: center;
+    padding-top: 9px;
+}

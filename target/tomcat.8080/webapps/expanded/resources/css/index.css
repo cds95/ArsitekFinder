@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+.jumbotron {
+	height: 500px;
+	background-image: url("http://llidesign.co.uk/assets/img/slider-img/Bishopswood%20-%20Contemporary%20Kitchen%20and%20dining%20room.jpg");
+	background-size: cover;
+	background-position: 10%;
+}
+
+.search {
+	text-align: center;
+}
+
+.information {
+	background: rgba(0, 0, 0, 0.5);
+	width: 450px;
+	height: 300px;
+	margin-left: 370px;
+	padding: 50px;
+}
+
+.header {
+	color: white;
+}
+
+.form-group {
+	margin-top: 50px;
+}
+
+.container-fluid {
+	text-align: center;
+}
+
+.signup {
+	text-align: center;
+}
