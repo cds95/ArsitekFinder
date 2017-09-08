@@ -20,7 +20,7 @@
                <a class="navbar-brand" href="#">JobFinder</a>
             </div>
             <ul class="nav navbar-nav">
-               <li><a href=https://jh-studio.herokuapp.com">Home</a></li>
+               <li><a href=https://jh-studio.herokuapp.com/">Home</a></li>
                <li> <a href="https://jh-studio.herokuapp.com/jobs">Browse</a></li>
                <c:if test="${user.handle == 'admin'}">
                		<li> <a href="https://jh-studio.herokuapp.com/post">Post Job</a></li>
