@@ -23,7 +23,7 @@
                <li><a href="http://localhost:8080/Freelance/">Home</a></li>
                <li> <a href="http://localhost:8080/Freelance/jobs">Browse</a></li>
                <c:if test="${user.handle == 'admin'}">
-               		<li> <a href="http://localhost:8080/Freelance/post">Post Job</a></li>
+               		<li> <a href="https://jh-studio.herokuapp.com/post">Post Job</a></li>
                </c:if>
             </ul>
             <c:choose>
