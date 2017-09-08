@@ -556,11 +556,4 @@ public class DatabaseManager {
 		tx.commit();
 	}
 	
-	/**
-	 * Ends a hibernate session
-	 */
-	public void endSession() {
-		this.session.close();
-		this.sessionFact.close();
-	}
 }

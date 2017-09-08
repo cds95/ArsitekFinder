@@ -6,7 +6,7 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">1b516486</property>
-        <property name="hibernate.connection.url">jdbc:mysql://us-cdbr-iron-east-05.cleardb.net/heroku_dbe49369f34d52b?reconnect=true</property>
+        <property name="hibernate.connection.url">jdbc:mysql://us-cdbr-iron-east-05.cleardb.net/heroku_dbe49369f34d52b?autoReconnect=true</property>
         <property name="hibernate.connection.username">b93834f9887a5e</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name= "hbm2ddl.auto">update</property>
