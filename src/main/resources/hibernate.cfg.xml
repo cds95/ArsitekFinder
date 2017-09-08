@@ -6,7 +6,7 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">hl8seq7rg4ifsbu6</property>
-        <property name="hibernate.connection.url">jdbc:mysql://a07yd3a6okcidwap.cbetxkdyhwsb.us-east-1.rds.amazonaws.com</property>
+        <property name="hibernate.connection.url">jdbc:mysql://a07yd3a6okcidwap.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/swqx6prhq2yv36pi</property>
         <property name="hibernate.connection.username">z78p8go6nsobcx7f</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name= "hbm2ddl.auto">update</property>
