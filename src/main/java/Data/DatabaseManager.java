@@ -10,6 +10,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
+import com.mysql.jdbc.Blob;
+
 import Entities.Applicant;
 import Entities.Job;
 import Entities.Location;
@@ -318,8 +320,9 @@ public class DatabaseManager {
 	 * @param user
 	 * @param job
 	 */
-	public void registerUser(User user, Job job, byte[] fileInfo) {
+	public void registerUser(User user, Job job, String fileName, byte[] fileInfo) {
 		Applicant app = new Applicant();
+		app.setFileName(fileName);
 		app.setFileInfo(fileInfo);
 		user.getApplications().add(app);
 		job.getApplicant().add(app);
@@ -334,7 +337,21 @@ public class DatabaseManager {
 		tx.commit();
 	}
 	
-
+	/**
+	 * Gets an application's work sample
+	 * @param aid
+	 * @return
+	 */
+	public Blob getSample(int aid) {
+		String hql = "From applicant Where aid =:aid";
+		Query query = this.session.createQuery(hql);
+		query.setParameter("aid", aid);
+		List<Blob> res = query.list();
+		if(!res.isEmpty()) {
+			return null;
+		} 
+		return res.get(0);
+	}
 	/**
 	 * Edits a given users phonenumber
 	 * 

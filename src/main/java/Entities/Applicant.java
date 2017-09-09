@@ -22,6 +22,7 @@ public class Applicant {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int aid;
+	private String fileName;
 	@ManyToOne
 	private User user;
 	@ManyToMany
@@ -41,6 +42,15 @@ public class Applicant {
 
 	public void setAid(int aid) {
 		this.aid = aid;
+	}
+	
+	
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public User getUser() {

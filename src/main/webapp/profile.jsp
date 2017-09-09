@@ -25,7 +25,6 @@
       <link href="css/universal.css" rel="stylesheet">
       <link href="css/prof.css" rel="stylesheet">
       <script src="js/profile.js"></script>
-      <script src="js/autocomplete.js"></script>
    </head>
    <body>
       <c:set var="sessionUserId" value="${user.uid}"></c:set>
