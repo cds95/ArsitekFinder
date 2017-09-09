@@ -87,6 +87,7 @@
                   </div>
                </form>
                <button id="submit" class="btn btn-default">Sign Up</button>
+               <div id="wait"></div>
             </div>
          </div>
       </c:if>

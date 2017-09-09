@@ -11,6 +11,16 @@ $(document).ready(function() {
 		source: availableTags
 	});
 	
+	$(document).ajaxStart(function(){
+        $("#wait").css("display", "block");
+        $("#submit").css("display", "none");
+    });
+	
+    $(document).ajaxComplete(function(){
+        $("#wait").css("display", "none");
+        $("#submit").css("display", "block");
+    });
+	
 	$("#submit").click(function() {
 		var handle = $('#handle').val();
 		$.ajax({
