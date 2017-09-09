@@ -49,3 +49,10 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+@media only screen and (max-width: 640px) {
+	.signin {
+		display: block;
+		margin: 0 auto;
+	}
+}

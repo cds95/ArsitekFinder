@@ -32,16 +32,9 @@
          <div class="container-fluid">
             <div class="information" id="signup">
                <div class="header">
-                  <h2>Find an Architect Today!</h2>
-               </div>
-               <form class="form-inline">
-                  <div class="form-group ui-widget">
-                     <input type="text" class="form-control" id="jobSearch" placeholder="Search for Jobs">
-                  </div>
-                  <div class="form-group">
-                     <button type="submit" class="btn btn-default">Search</button>
-                  </div>
-               </form>
+                  <h2>JH Studio Designs</h2>
+                  <h4>Top Quality Freelance Architecture Work</h4>
+               </div> 
             </div>
          </div>
       </div>

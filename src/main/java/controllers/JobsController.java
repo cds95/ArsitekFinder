@@ -5,13 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -29,23 +27,10 @@ import Entities.Job;
 import Entities.Tags;
 import Entities.User;
 
-import com.google.cloud.storage.Acl;
-import com.google.cloud.storage.Blob;
-import com.google.cloud.storage.BlobInfo;
-import com.google.cloud.storage.Storage;
-import com.google.cloud.storage.StorageOptions;
-
 import java.nio.channels.Channels;
 
 @Controller
 public class JobsController {
-
-	private static final String BUCKET_NAME = "resume-sample";
-	 private static Storage storage = null;
-	
-	public JobsController() {
-		storage = StorageOptions.getDefaultInstance().getService();
-	}
 	
 	/**
 	 * Filters the searched jobs according to the category picked
@@ -216,7 +201,6 @@ public class JobsController {
 	 * @param fileFolderPath
 	 * @throws Exception
 	 */
-	@SuppressWarnings("deprecation")
 	public void saveFile(User user, HttpServletRequest request, String fileServerLoc, String fileFolderPath)
 			throws Exception {
 		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
@@ -224,31 +208,20 @@ public class JobsController {
 			manager = new DatabaseManager(); // Takes care of case when this is
 												// first page user visits
 		}
-		
-		
 		ServletFileUpload sfu = new ServletFileUpload(new DiskFileItemFactory());
 		List<FileItem> files = sfu.parseRequest(request);
 		FileItem f1 = files.get(0);
 		int jid = Integer.parseInt(f1.getFieldName());
 		FileItem file = files.get(1);
 		String fileName = file.getName();
-		
-		Part filePart = request.getPart("selectedFile");
-		 List<Acl> acls = new ArrayList<Acl>();
-		    acls.add(Acl.of(Acl.User.ofAllUsers(), Acl.Role.READER));
 		if (FileManager.containsSpace(fileName)) {
 			fileName = FileManager.formatter(fileName);
 		}
-		
-		// the inputstream is closed by default, so we don't need to close it here
-	    Blob blob =
-	        storage.create(
-	            BlobInfo.newBuilder(BUCKET_NAME, fileName).setAcl(acls).build(),
-	            filePart.getInputStream());
-	    
-		System.out.println(blob.getMediaLink());
+		fileFolderPath += fileName;
+		fileServerLoc += fileName;
+		file.write(new File(fileServerLoc));
 		Job job = manager.getJob(jid);
-		manager.registerUser(user, job, blob.getMediaLink());
+		manager.registerUser(user, job, fileFolderPath);
 	}
 
 	/**
