@@ -11,9 +11,10 @@ public class TrialClass {
 	
 	public static void main(String[] args) {
 		DatabaseManager manager = new DatabaseManager();
-		User user = manager.getUser(1);
-		Tags tag = manager.getTag("AutoCAD");
-		System.out.println(user.containsTag(tag));
+		List<Tags> tags = manager.getTags();
+		for(Tags tag : tags) {
+			System.out.println(tag.getSkill());
+		}
 	}
 	
 }

@@ -19,6 +19,7 @@ import Data.DatabaseManager;
 import Data.Security;
 import Entities.Applicant;
 import Entities.Job;
+import Entities.Tags;
 import Entities.User;
 
 /**
@@ -68,8 +69,12 @@ public class MainController {
 	}
 	
 	@RequestMapping("post")
-	public String goToPost() {
-		return "post.jsp";
+	public ModelAndView goToPost() {
+		List<Tags> tags = manager.getTags();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("tags", tags);
+		mv.setViewName("post.jsp");
+		return mv;
 	}
 	
 	/**
@@ -99,11 +104,13 @@ public class MainController {
 	
 	@RequestMapping("profile")
 	public ModelAndView showProfile(HttpSession session, @RequestParam("handle") String handle) {
+		List<Tags> tags = manager.getTags();
 		User user = manager.getUser(handle);
 		if(user == null) {
 			user = (User) session.getAttribute("user");
 		}
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("tags", tags);
 		mv.addObject("selectedUser", user);
 		mv.setViewName("profile.jsp");
 		return mv;
@@ -111,11 +118,13 @@ public class MainController {
 	
 	@RequestMapping("job")
 	public ModelAndView getJobInfo(@RequestParam("jid") String jid) {
+		List<Tags> tags = manager.getTags();
 		int id = Integer.parseInt(jid);
 		Job job = this.manager.getJob(id);
 		List<Applicant> applicants = manager.getJobApplications(id);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("job", job);
+		mv.addObject("tags", tags);
 		mv.addObject("applicants", applicants);
 		mv.setViewName("job.jsp");
 		return mv;

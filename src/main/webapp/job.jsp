@@ -71,9 +71,14 @@
                   <h5 class="skills">Skills Required</h5>
                   <c:if test="${currUser == 'admin'}">
                      <div class="skills ui-widget">
-                        <input type="text" name="skill" id="skill">
-                        <a href="#" id="add">Add</a>
-                        Maximum of 5 Skills
+                     
+                     	<label>Skills (Maximum of 5):</label>
+            				<select class="form-control" id="skill">
+			            		<c:forEach items="${tags}" var="tag">
+			            			<option>${tag.skill}</option>
+			            		</c:forEach>
+                 			 </select>
+            				<a href="#" id="add">Add</a>
                         <div id="skill-error"></div>
                      </div>
                   </c:if>

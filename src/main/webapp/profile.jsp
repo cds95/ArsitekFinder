@@ -49,7 +49,11 @@
             <div class="skills ui-widget">
                <h4>Skills (Maximum of 5 Skills)</h4>
                <c:if test="${sessionUserId eq selectUserId}">
-                  <input type="text" name="skill" id="skill" placeholder="Type a skill">
+            	<select class="form-control" id="skill">
+            		<c:forEach items="${tags}" var="tag">
+            			<option>${tag.skill}</option>
+            		</c:forEach>
+                  </select>	
                   <a href="#" id="add">Add</a>
                </c:if>
             </div>

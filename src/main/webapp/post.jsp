@@ -26,7 +26,6 @@
       <link href="css/universal.css" rel="stylesheet">
       <link href="css/post.css" rel="stylesheet">
       <script src="js/post.js"></script>
-      <script src="js/autocomplete.js"></script>
    </head>
    <body>
       <%@ include file = "navbar.jsp" %>
@@ -57,9 +56,13 @@
                   </select>
                </div>
             </div>
-            <div class="skills ui-widget">
+            <div class="skills">
             	<label>Skills (Maximum of 5):</label>
-            	<input type="text" name="skill" id="skill">
+            	<select class="form-control" id="skill">
+            		<c:forEach items="${tags}" var="tag">
+            			<option>${tag.skill}</option>
+            		</c:forEach>
+                  </select>
             	<a href="#" id="add">Add</a>
             	<div id="error">
             	
