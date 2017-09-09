@@ -151,6 +151,10 @@ public class JobsController {
 		Job job = createJob(jobTitle, desc, price, type);
 		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
 		User user = (User) request.getSession().getAttribute("user");
+		if(manager == null) {
+			manager = new DatabaseManager();
+			request.getSession().setAttribute("manager", manager);
+		}
 		manager.addJob(job, user);
 		String skills = request.getParameter("skills");
 		String[] skillSet = skills.split(",");

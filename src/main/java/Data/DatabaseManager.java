@@ -261,7 +261,11 @@ public class DatabaseManager {
 		String hql = "From User Where handle = :handle";
 		Query query = this.session.createQuery(hql);
 		query.setParameter("handle", handle);
-		return (User) query.list().get(0);
+		List res = query.list();
+		if(!res.isEmpty()) {
+			return (User) res.get(0);
+		}
+		return null;
 	}
 
 	public User getUser(int uid) {

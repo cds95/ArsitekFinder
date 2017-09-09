@@ -98,8 +98,11 @@ public class MainController {
 	}
 	
 	@RequestMapping("profile")
-	public ModelAndView showProfile(@RequestParam("handle") String handle) {
+	public ModelAndView showProfile(HttpSession session, @RequestParam("handle") String handle) {
 		User user = manager.getUser(handle);
+		if(user == null) {
+			user = (User) session.getAttribute("user");
+		}
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("selectedUser", user);
 		mv.setViewName("profile.jsp");
