@@ -73,3 +73,25 @@ input {
 #display-err {
 	color: red;
 }
+
+@media only screen and (max-width: 640px) {
+	.userInfo {
+		float: none;
+		width: 300px;
+		padding: 10px;
+	}
+
+	.right {
+		float: none;
+		margin-left: 20%;
+	}
+	form {
+		width: 60%;
+		display: block;
+		margin: 0 auto;
+	}
+
+	#basic-information {
+		padding: 0 0;
+	}
+}
