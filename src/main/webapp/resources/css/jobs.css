@@ -27,9 +27,6 @@ ul {
 .jobs {
 	width: 700px;
 	float: right;
-	margin: 0 150px 20px 100px;
-	margin-left: 20px;
-	margin-right: 150px;
 	margin-top: 0px;
 }
 
@@ -116,6 +113,10 @@ hr {
 	display: none;
 }
 
+#not-available {
+	font-size: 20pt;
+}
+
 @media only screen and (max-width: 640px) {
 	#cat-list {
 		display: block;
@@ -156,7 +157,7 @@ hr {
 		float: none;
 		width: 90%;
 		display: block;
-		margin-top: 15px;
+		margin: 15px auto;
 	}
 
 	.price {
@@ -174,4 +175,9 @@ hr {
 		float: none;
 		display: inline-block;
 	}
+
+	#not-available {
+		font-size: 15pt;
+	}
 }
+

@@ -60,9 +60,7 @@
             <div class="jobs">
                <c:choose>
                   <c:when test="${empty jobs}">
-                     <div class="noJobs">
-                        <h4>No Jobs Currently Available</h4>
-                     </div>
+                     <span id="not-available">No Jobs Currently Available</span>
                   </c:when>
                   <c:otherwise>
                      <c:forEach items="${jobs}" var="job">
