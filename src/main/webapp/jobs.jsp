@@ -45,6 +45,7 @@
                <li class="designer"><a href="#">FFE</a></li>
             </ul>
             <select id="cat-list">
+            	<option class="designer">All Jobs</option>
             	<option class="designer">Drafter (Interior)</option>
             	<option class="designer">Drafter (Architecture)</option>
             	<option class="designer">Renderer (2D)</option>

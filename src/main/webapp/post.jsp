@@ -49,7 +49,7 @@
                   <label for="sel1">Type of Job:</label>
                   <select class="form-control" id="type">
                      <option>Drafter (Interior)</option>
-                     <option>Drafter (Exterior)</option>
+                     <option>Drafter (Architecture)</option>
                      <option>Renderer (2D)</option>
                      <option>Renderer (3D)</option>
                      <option>FFE</option>
