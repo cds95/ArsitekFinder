@@ -26,3 +26,12 @@ body {
     text-align: center;
     padding-top: 9px;
 }
+
+@media only screen and (max-width: 640px) {
+    .navbar-toggle {
+   		position: absolute;
+   		top: 0;
+   		left: 270px;
+   }
+
+}

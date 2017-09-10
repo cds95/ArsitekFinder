@@ -19,7 +19,13 @@
             <div class="navbar-header">
                <a class="navbar-brand" href="#">JobFinder</a>
             </div>
-            <ul class="nav navbar-nav">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+      			<span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+      		</button>
+            <div class="collapse navbar-collapse navHeaderCollapse">
+            	<ul class="nav navbar-nav">
                <li><a href="https://jh-studio.herokuapp.com/">Home</a></li>
                <li> <a href="https://jh-studio.herokuapp.com/jobs">Browse</a></li>
                <c:if test="${user.handle == 'admin'}">
@@ -46,6 +52,7 @@
                   </ul>
                </c:otherwise>
             </c:choose>
+            </div>
          </div>
       </nav>
 </body>
