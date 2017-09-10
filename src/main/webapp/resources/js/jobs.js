@@ -21,7 +21,6 @@ $(document).ready(function() {
 	 * Sends an ajax call so as to filter jobs on page
 	 */
 	function filterJob(text) {
-		var text = $(this).text();
 		$.ajax({
 			url: "https://jh-studio.herokuapp.com/jobs/filter",
 			type: "GET",
