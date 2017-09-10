@@ -111,3 +111,72 @@ ul {
 hr {
 	width: 97%;
 }
+
+#cat-list {
+	display: none;
+}
+
+@media only screen and (max-width: 640px) {
+	#cat-list {
+		display: block;
+		margin: 0 auto;
+		width: 100%;
+		height: 30px;
+	}
+
+	.filters {
+		width: 80%;
+		display: block;
+		margin: 0 auto;
+		float: none;
+	}
+
+	.filters a, hr, h3 {
+		display: none;
+	}
+
+	.results {
+		display: none;
+	}
+
+	.jobs {
+		float: none;
+		display: block;
+		margin: 0 auto;
+	}
+
+	.jobContainer {
+		float: none;
+		width: 100%;
+		text-align: center;
+	}
+
+	.noJobs {
+		width: 100%;
+		display: block;
+		margin: 0 auto;
+		padding-right: 350px;
+	}
+
+	.jobs {
+		float: none;
+		width: 90%;
+		display: block;
+	}
+
+	.price {
+		display: none;
+
+	}
+
+	.desc {
+		width: 100%;
+		display: inline-block;
+		margin: 0 auto;
+	}
+
+	.tag {
+		float: none;
+		display: inline-block;
+	}
+}

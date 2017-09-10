@@ -8,7 +8,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-      <title>Home</title>
+      <title>Jobs</title>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -44,6 +44,13 @@
                <li class="designer"><a href="#">Renderer (3D)</a></li>
                <li class="designer"><a href="#">FFE</a></li>
             </ul>
+            <select id="cat-list">
+            	<option class="designer">Drafter (Interior)</option>
+            	<option class="designer">Drafter (Architecture)</option>
+            	<option class="designer">Renderer (2D)</option>
+            	<option class="designer">Renderer (3D)</option>
+            	<option class="designer">FFE</option>
+            </select>
          </div>
          <div class="results">
             <h3 id="jobHead">All Jobs</h3>
