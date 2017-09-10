@@ -13,7 +13,8 @@ $(document).ready(function() {
 	});
 	
 	$('#cat-list').change(function() {
-		var text = $(this).text();
+		var text = $(this).val();
+		console.log(text);
 		filterJob(text);
 	});
 	
