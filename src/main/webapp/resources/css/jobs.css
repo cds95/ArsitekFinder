@@ -139,12 +139,6 @@ hr {
 		display: none;
 	}
 
-	.jobs {
-		float: none;
-		display: block;
-		margin: 0 auto;
-	}
-
 	.jobContainer {
 		float: none;
 		width: 100%;
@@ -162,6 +156,7 @@ hr {
 		float: none;
 		width: 90%;
 		display: block;
+		margin-top: 15px;
 	}
 
 	.price {

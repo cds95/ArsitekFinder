@@ -3,12 +3,24 @@
  */
 
 $(document).ready(function() {
-	var jid = -1;
 	
 	/**
 	 * Filters job
 	 */
 	$(".designer").click(function() {
+		var text = $(this).text();
+		filterJob(text);
+	});
+	
+	$('#cat-list').change(function() {
+		var text = $(this).text();
+		filterJob(text);
+	});
+	
+	/**
+	 * Sends an ajax call so as to filter jobs on page
+	 */
+	function filterJob(text) {
 		var text = $(this).text();
 		$.ajax({
 			url: "https://jh-studio.herokuapp.com/jobs/filter",
@@ -26,8 +38,7 @@ $(document).ready(function() {
 				$(".jobContainer").load("jobs.jsp" + " .jobs");
 			}
 		});
-	});
-	
+	}
 	/**
 	 * Closes a job
 	 */
