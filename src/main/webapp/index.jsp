@@ -29,19 +29,12 @@
    <body>
       <%@ include file = "navbar.jsp" %>
       <div class="jumbotron">
-         <div class="container-fluid">
+         <div class="container-fluid" id="head">
             <div class="information" id="signup">
                <div class="header">
                   <h2>Find an Architect Today!</h2>
                </div>
-               <form class="form-inline">
-                  <div class="form-group ui-widget">
-                     <input type="text" class="form-control" id="jobSearch" placeholder="Search for Jobs">
-                  </div>
-                  <div class="form-group">
-                     <button type="submit" class="btn btn-default">Search</button>
-                  </div>
-               </form>
+               <a href="https://jh-studio.herokuapp.com/jobs">Start Browsing For Jobs</a>
             </div>
          </div>
       </div>
