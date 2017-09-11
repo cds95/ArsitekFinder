@@ -230,7 +230,7 @@ public class JobsController {
 	 * @throws StorageException 
 	 * @throws FileNotFoundException 
 	 */
-	@RequestMapping("/getsample")
+	@RequestMapping(value="/getsample", method = RequestMethod.POST)
 	public void getResume(@RequestParam("aid") int id, HttpSession session) throws FileNotFoundException, StorageException {
 		String home = System.getProperty("user.home");
 		FileManager fileManager = new FileManager();

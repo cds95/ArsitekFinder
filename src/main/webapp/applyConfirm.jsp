@@ -8,7 +8,7 @@
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
          <meta name="viewport" content="width=device-width, initial-scale=1">
          <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-         <title>Home</title>
+         <title>Confirmation</title>
          <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
          <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -22,38 +22,7 @@
       	<link href="universal.css" rel="stylesheet">
    </head>
 <body>
-	<nav class="navbar navbar-inverse">
-         <div class="container-fluid">
-            <div class="navbar-header">
-               <a class="navbar-brand" href="#">JobFinder</a>
-            </div>
-            <ul class="nav navbar-nav">
-               <li><a href="http://localhost:8080/Freelance/index.jsp">Home</a></li>
-               <li class="active"> <a href="http://localhost:8080/Freelance/FinderController">Browse</a></li>
-               <li> <a href="http://localhost:8080/Freelance/post.jsp">Post Job</a></li>
-            </ul>
-            <c:choose>
-               <c:when test="${empty user}">
-                  <ul class="nav navbar-nav navbar-right">
-                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                     <li><a href="http://localhost:8080/Freelance/login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                  </ul>
-               </c:when>
-               <c:otherwise>
-                  <ul class="nav navbar-nav navbar-right">
-                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> ${user.handle}</a>
-                        <span class="caret"></span>
-                        <ul class="dropdown-menu">
-                           <li><a href="http://localhost:8080/Freelance/ProfilLoaderController?userId=${user.uid}">My Profile</a></li>
-                           <li><a href="http://localhost:8080/Freelance/LogoutController">Logout</a></li>
-                        </ul>
-                     </li>
-                  </ul>
-               </c:otherwise>
-            </c:choose>
-         </div>
-      </nav>
+	  <%@ include file = "navbar.jsp" %>
       <div>
       	<h5>Thank you for applying!</h5>
       </div>
