@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import Data.DatabaseManager;
+import Data.FileManager;
 import Data.Security;
 import Entities.Applicant;
 import Entities.Job;
@@ -120,5 +125,23 @@ public class UserController {
 		}
 		writer.print(json);
 		writer.flush();
+	}
+	
+	/**
+	 * Takes care of Post request to upload user resume
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping(value="uploadresume", method = RequestMethod.POST)
+	public void updateUserResume(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
+		User user = (User) request.getSession().getAttribute("user");
+		FileManager fileManager = new FileManager();
+		ServletFileUpload sfu = new ServletFileUpload(new DiskFileItemFactory());
+		List<FileItem> files = sfu.parseRequest(request);
+		FileItem file = files.get(0);
+		String name = fileManager.uploadToAzure(file);
+		manager.setUserResume(user, name);
 	}
 }

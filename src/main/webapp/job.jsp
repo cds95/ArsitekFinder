@@ -124,7 +124,7 @@
                                        </c:forEach>
                                     </div>
                                     <div class="accept">
-                                       <a href="#" download>View Resume</a>
+                                       <a href="${app.user.resume}" download>View Resume</a> <br>
                                        <a href="${app.portPath}" download>View Work Sample</a>
                                     </div>
                                  </div>

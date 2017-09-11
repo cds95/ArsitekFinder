@@ -210,8 +210,7 @@ public class JobsController {
 			throws Exception {
 		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
 		if (manager == null) {
-			manager = new DatabaseManager(); // Takes care of case when this is
-												// first page user visits
+			manager = new DatabaseManager(); // Takes care of case when this is	first page user visits
 		}
 		ServletFileUpload sfu = new ServletFileUpload(new DiskFileItemFactory());
 		List<FileItem> files = sfu.parseRequest(request);

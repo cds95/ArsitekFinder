@@ -92,7 +92,7 @@
       	<hr>
       	<div class="resume">
       		<h4>Resume</h4>
-      		<h5><a href="${user.resume}">View Resume</a></h5>
+      		<h5><a href="${user.resume}" download>View Resume</a></h5>
       		<c:if test="${sessionUserId eq selectUserId}">
       			<button id="resume" type="button" class="btn btn-success">Upload Resume</button>
       		</c:if>
@@ -101,7 +101,7 @@
       <div id="upload-resume">
       	<h3>Upload Resume</h3>
       	<h5>Please upload a copy of your resume below</h5>
-      	<form action="UploadResume" enctype="multipart/form-data" method="post">
+      	<form action="uploadresume" enctype="multipart/form-data" method="post">
       		<input type="file" id="fileInput" name="selectedFile" multiple size="50">
       		<input type="submit" class="btn btn-success">
       	</form>

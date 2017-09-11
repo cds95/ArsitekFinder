@@ -578,6 +578,18 @@ public class DatabaseManager {
 	}
 	
 	/**
+	 * Sets a user's resume
+	 * @param user
+	 * @param resume
+	 */
+	public void setUserResume(User user, String resume) {
+		Transaction tx = this.session.beginTransaction();
+		user.setResume(resume);
+		this.session.save(user);
+		tx.commit();
+	}
+	
+	/**
 	 * Sets a user's password
 	 * @param user
 	 * @param password
