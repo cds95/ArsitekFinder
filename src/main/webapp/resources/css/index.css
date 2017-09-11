@@ -3,9 +3,13 @@
 .jumbotron {
 	height: 500px;
 	padding: 0;
-	background-image: url("http://llidesign.co.uk/assets/img/slider-img/Bishopswood%20-%20Contemporary%20Kitchen%20and%20dining%20room.jpg");
+	background-image: url("https://jh-studio.herokuapp.com/resources/images/apt3-1b.jpg");
 	background-size: cover;
 	background-position: 10%;
+}
+
+#head {
+	background: rgba(0, 0, 0, 0.5);
 }
 
 .search {
