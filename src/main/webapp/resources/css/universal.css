@@ -4,6 +4,11 @@ body {
 	font-family: 'Raleway', sans-serif;
 }
 
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
 .remove {
 	color: white;
 	margin-left: 5px;
