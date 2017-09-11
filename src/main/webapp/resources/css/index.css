@@ -12,6 +12,15 @@
 	background: rgba(0, 0, 0, 0.5);
 }
 
+a {
+	color: white;
+	font-size: 15pt;
+}
+
+a:hover {
+	color: black;
+	text-decoration: underline;
+}
 .search {
 	text-align: center;
 }
