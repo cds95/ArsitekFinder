@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -10,6 +11,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -18,7 +20,10 @@ import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.microsoft.azure.storage.StorageException;
 
 import Data.DatabaseManager;
 import Data.FileManager;
@@ -183,7 +188,7 @@ public class JobsController {
 	public ModelAndView registerForJob(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		User user = (User) request.getSession().getAttribute("user");
 		try {
-			this.saveFile(user, request, FileManager.WORKSAMPLEFILEPATH, FileManager.SAVEDPORTPATH);
+			this.saveFile(user, request);
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("applyConfirm.jsp");
 			return mv;
@@ -201,7 +206,7 @@ public class JobsController {
 	 * @param fileFolderPath
 	 * @throws Exception
 	 */
-	public void saveFile(User user, HttpServletRequest request, String fileServerLoc, String fileFolderPath)
+	public void saveFile(User user, HttpServletRequest request)
 			throws Exception {
 		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
 		if (manager == null) {
@@ -213,15 +218,25 @@ public class JobsController {
 		FileItem f1 = files.get(0);
 		int jid = Integer.parseInt(f1.getFieldName());
 		FileItem file = files.get(1);
-		String fileName = file.getName();
-		if (FileManager.containsSpace(fileName)) {
-			fileName = FileManager.formatter(fileName);
-		}
-		fileFolderPath += fileName;
-		fileServerLoc += fileName;
-		file.write(new File(fileServerLoc));
+		FileManager fileManager = new FileManager();
+		String name = fileManager.uploadToAzure(file);
 		Job job = manager.getJob(jid);
-		manager.registerUser(user, job, fileFolderPath);
+		manager.registerUser(user, job, name);
+	}
+	
+	/**
+	 * Downloads resume to Downloads folder
+	 * @param name
+	 * @throws StorageException 
+	 * @throws FileNotFoundException 
+	 */
+	@RequestMapping("/getsample")
+	public void getResume(@RequestParam("aid") int id, HttpSession session) throws FileNotFoundException, StorageException {
+		String home = System.getProperty("user.home");
+		FileManager fileManager = new FileManager();
+		DatabaseManager manager = (DatabaseManager) session.getAttribute("manager");
+		String fileName = manager.getApplicationFile(id);
+		fileManager.downloadFromAzure(home +"\\Downloads\\", fileName);
 	}
 
 	/**

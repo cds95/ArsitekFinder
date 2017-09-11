@@ -44,6 +44,19 @@ $(document).ready(function() {
 	});
 	
 	/**
+	 * Sends a request to server so as to download work sample
+	 */
+	$(".sample").click(function() {
+		$.ajax({
+			url: "https://jh-studio.herokuapp.com/getsample",
+			type: "POST",
+			data: {
+				aid: $(this).attr('id')
+			}
+		});
+	})
+	
+	/**
 	 * Adds a skill tag onto the job screen.  Will produce an error if there are already 5
 	 * skills attached to the job
 	 */

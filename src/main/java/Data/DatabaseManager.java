@@ -298,11 +298,11 @@ public class DatabaseManager {
 	 * @param user
 	 * @param job
 	 */
-	public void registerUser(User user, Job job, String filePath) {
+	public void registerUser(User user, Job job, String fileName) {
 		user.getJobs().add(job);
 		job.getUser().add(user);
 		Applicant app = new Applicant();
-		app.setPortPath(filePath);
+		app.setFileName(fileName);
 		app.getJobs().add(job);
 		app.setUser(user);
 		user.getApplications().add(app);
@@ -452,7 +452,7 @@ public class DatabaseManager {
 	 * @return
 	 */
 	public List<Job> getAllUserJobs(String handle) {
-		String hql = "From Job Where employer = :handle";
+		String hql = "From job Where employer = :handle";
 		Query query = this.session.createQuery(hql);
 		query.setParameter("handle", handle);
 		return query.list();
@@ -463,9 +463,21 @@ public class DatabaseManager {
 	 * @return
 	 */
 	public List<Applicant> getAllApplications() {
-		String hql = "FROM Applicant";
+		String hql = "FROM applicant";
 		Query query = this.session.createQuery(hql);
 		return query.list();
+	}
+	
+	/**
+	 * Returns the file name of an application
+	 * @param aid
+	 * @return
+	 */
+	public String getApplicationFile(int aid) {
+		String hql = "SELECT fileName FROM applicant WHERE aid = :aid";
+		Query query = this.session.createQuery(hql);
+		query.setParameter("aid", aid);
+		return (String) query.list().get(0);
 	}
 
 	/**
@@ -473,7 +485,7 @@ public class DatabaseManager {
 	 * @return
 	 */
 	public List<Applicant> getJobApplications(int jid) {
-		String hql = "Select applicant FROM Job WHERE jid = :jid";
+		String hql = "Select applicant FROM job WHERE jid = :jid";
 		Query query = this.session.createQuery(hql);
 		query.setParameter("jid", jid);
 		return query.list();

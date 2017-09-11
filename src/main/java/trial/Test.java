@@ -1,23 +1,17 @@
 package trial;
-import org.springframework.beans.factory.*;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
-@SuppressWarnings("deprecation")
 public class Test {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("application.xml");
-		MailMail m = (MailMail) ctx.getBean("mailMail");
-		String sender = "terminator2.dim@gmail.com";// write here sender gmail
-													// id
-		String receiver = "sastr4284@gapps.uwcsea.edu.sg";// write here receiver
-															// id
-		m.sendMail(sender, receiver, "hi", "welcome");
-
-		System.out.println("success");
+		File config = new File("azureConfig");
+		Scanner scanner = new Scanner(config);
+		String name = scanner.next();
+		String key = scanner.next();
+		System.out.println(name);
+		System.out.println(key);
+		scanner.close();
 	}
 }

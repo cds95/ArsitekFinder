@@ -44,7 +44,6 @@ public class Applicant {
 		this.aid = aid;
 	}
 	
-	
 	public String getFileName() {
 		return fileName;
 	}
