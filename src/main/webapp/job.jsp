@@ -99,6 +99,7 @@
                         <c:if test="${user.checkApplied(job) == false || empty user}">
                            <button type="button" class="btn btn-success applyButton">Apply</button>
                         </c:if>
+                        
                      </div>
                   </c:when>
                   <c:otherwise>
@@ -123,8 +124,8 @@
                                        </c:forEach>
                                     </div>
                                     <div class="accept">
-                                       <button type="button" id="${app.user.uid}" class="btn btn-success resume">View Resume</button> <br>
-                                       <button type="button" id="${app.portPath}" class="btn btn-success sample">Download Work Sample</button>
+                                       <a href="#" download>View Resume</a>
+                                       <a href="${app.portPath}" download>View Work Sample</a>
                                     </div>
                                  </div>
                                  <hr>
