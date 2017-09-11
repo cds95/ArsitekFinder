@@ -8,11 +8,7 @@
 	background-position: 10%;
 }
 
-#head {
-	background: rgba(0, 0, 0, 0.5);
-}
-
-a {
+.jumbotron a {
 	color: white;
 	font-size: 15pt;
 }
