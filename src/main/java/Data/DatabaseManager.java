@@ -452,7 +452,7 @@ public class DatabaseManager {
 	 * @return
 	 */
 	public List<Job> getAllUserJobs(String handle) {
-		String hql = "From job Where employer = :handle";
+		String hql = "From Job Where employer = :handle";
 		Query query = this.session.createQuery(hql);
 		query.setParameter("handle", handle);
 		return query.list();
@@ -463,7 +463,7 @@ public class DatabaseManager {
 	 * @return
 	 */
 	public List<Applicant> getAllApplications() {
-		String hql = "FROM applicant";
+		String hql = "FROM Applicant";
 		Query query = this.session.createQuery(hql);
 		return query.list();
 	}
@@ -474,7 +474,7 @@ public class DatabaseManager {
 	 * @return
 	 */
 	public String getApplicationFile(int aid) {
-		String hql = "SELECT fileName FROM applicant WHERE aid = :aid";
+		String hql = "SELECT fileName FROM Applicant WHERE aid = :aid";
 		Query query = this.session.createQuery(hql);
 		query.setParameter("aid", aid);
 		return (String) query.list().get(0);
@@ -485,7 +485,7 @@ public class DatabaseManager {
 	 * @return
 	 */
 	public List<Applicant> getJobApplications(int jid) {
-		String hql = "Select applicant FROM job WHERE jid = :jid";
+		String hql = "Select applicant FROM Job WHERE jid = :jid";
 		Query query = this.session.createQuery(hql);
 		query.setParameter("jid", jid);
 		return query.list();
