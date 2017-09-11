@@ -235,6 +235,9 @@ public class JobsController {
 		String home = System.getProperty("user.home");
 		FileManager fileManager = new FileManager();
 		DatabaseManager manager = (DatabaseManager) session.getAttribute("manager");
+		if(manager == null){
+			manager = new DatabaseManager();
+		}
 		String fileName = manager.getApplicationFile(id);
 		fileManager.downloadFromAzure(home +"\\Downloads\\", fileName);
 	}

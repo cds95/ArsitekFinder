@@ -298,11 +298,11 @@ public class DatabaseManager {
 	 * @param user
 	 * @param job
 	 */
-	public void registerUser(User user, Job job, String fileName) {
+	public void registerUser(User user, Job job, String fileInfo) {
 		user.getJobs().add(job);
 		job.getUser().add(user);
 		Applicant app = new Applicant();
-		app.setFileName(fileName);
+		app.setPortPath(fileInfo);
 		app.getJobs().add(job);
 		app.setUser(user);
 		user.getApplications().add(app);
@@ -474,7 +474,7 @@ public class DatabaseManager {
 	 * @return
 	 */
 	public String getApplicationFile(int aid) {
-		String hql = "SELECT fileName FROM Applicant WHERE aid = :aid";
+		String hql = "SELECT portPath FROM Applicant WHERE aid = :aid";
 		Query query = this.session.createQuery(hql);
 		query.setParameter("aid", aid);
 		return (String) query.list().get(0);

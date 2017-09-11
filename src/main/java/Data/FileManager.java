@@ -25,6 +25,7 @@ import com.microsoft.azure.storage.blob.ListBlobItem;
  *
  */
 public class FileManager {
+	public static final String AZUREHOST = "https://jhstudio.blob.core.windows.net";
 	public static final String NAME = System.getenv("AZURE_NAME");
 	public static final String KEY = System.getenv("AZURE_KEY");
 	public static final String storageConnectionString =
@@ -50,7 +51,7 @@ public class FileManager {
 	
 	/**
 	 * Uploads the passed in FileItem into the azure cloud storage and returns the blobs
-	 * file name
+	 * url name
 	 * @param file
 	 * @throws Exception
 	 */
@@ -60,7 +61,7 @@ public class FileManager {
 		File source = new File(name);
 		file.write(source);
 		blob.upload(new FileInputStream(source), source.length());
-		return name;
+		return AZUREHOST + blob.getUri().getPath();
 	}
 	
 	/**
