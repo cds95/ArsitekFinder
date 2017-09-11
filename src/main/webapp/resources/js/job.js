@@ -47,12 +47,9 @@ $(document).ready(function() {
 	 * Sends a request to server so as to download work sample
 	 */
 	$(".sample").click(function() {
+		var targetUrl = $(this).attr('id');
 		$.ajax({
-			url: "https://jh-studio.herokuapp.com/getsample",
-			type: "POST",
-			data: {
-				aid: $(this).attr('id')
-			}
+			url: targetUrl
 		});
 	})
 	
