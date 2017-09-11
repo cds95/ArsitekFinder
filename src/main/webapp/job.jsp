@@ -123,7 +123,7 @@
                                        </c:forEach>
                                     </div>
                                     <div class="accept">
-                                       <button type="button" id="${app.user.id}" class="btn btn-success resume">View Resume</button> <br>
+                                       <button type="button" id="${app.user.uid}" class="btn btn-success resume">View Resume</button> <br>
                                        <button type="button" id="${app.aid}" class="btn btn-success sample">Download Work Sample</button>
                                     </div>
                                  </div>
