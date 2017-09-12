@@ -1,0 +1,47 @@
+@CHARSET "ISO-8859-1";
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+}
+
+textarea {
+    height: 50%;
+}
+
+#result {
+	width: 50%;
+	display: none;
+	margin: 30px auto;
+	background: #B4EEB4;
+	padding: 10px;
+}
+
+#message {
+	height: 200px;
+}
+
+h3 {
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+
+@media only screen and (max-width: 640px) {
+	.btn {
+		width: 30%;
+		display: block;
+		margin: 0 auto;
+	}
+	
+	h1 {
+		font-size: 20pt;
+	}
+}

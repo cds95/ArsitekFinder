@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import Data.DatabaseManager;
+import Data.EmailManager;
 import Data.Security;
 import Entities.Applicant;
 import Entities.Job;
@@ -31,6 +32,8 @@ import Entities.User;
 @RequestMapping("/")
 public class MainController {
 	
+	public static final String WEBSITEEMAIL = System.getenv("WEBSITE_EMAIL");
+	public static final String TARGETEMAIL = System.getenv("TARGET_EMAIL");
 	private DatabaseManager manager;
 	private User sessionUser; //Current session user object
 	
@@ -128,6 +131,18 @@ public class MainController {
 		mv.addObject("applicants", applicants);
 		mv.setViewName("job.jsp");
 		return mv;
+	}
+	
+	@RequestMapping(value = "contactus", method = RequestMethod.POST)
+	public void sendContact(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("subject") String subject, 
+					@RequestParam("message") String message, HttpServletResponse response) {
+		String msg = "From: " + email +  ": " + message;
+		EmailManager.sendEmail(WEBSITEEMAIL, TARGETEMAIL, name + ": " + subject, msg);
+		try {
+			response.getWriter().write("success");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
