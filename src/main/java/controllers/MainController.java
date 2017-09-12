@@ -51,6 +51,11 @@ public class MainController {
 		return "edit.jsp";
 	}
 	
+	@RequestMapping("contact")
+	public String goToContact() {
+		return "contact.jsp";
+	}
+	
 	@RequestMapping("jobs")
 	public ModelAndView goToJobs(HttpSession session) {
 		User user = (User) session.getAttribute("user");
