@@ -180,5 +180,18 @@ hr {
 	#not-available {
 		font-size: 15pt;
 	}
+	
+	.left h5 {
+		margin-top: 2px;
+		float: none;
+		margin-bottom: 0;
+	}
+
+	.available {
+		float: none;
+		display: block;
+		margin: 4px auto;
+	}
 }
+
 
