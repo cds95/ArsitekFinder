@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
  *
  */
 public class Security {
-	public static final String SALT = "dim";
+	public static final String SALT = System.getenv("SALT");
 	
 	/**
 	 * Compares an inputted password and its hashed password.  Returns true
