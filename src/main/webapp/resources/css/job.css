@@ -53,28 +53,24 @@ body {
 	font-size: 13pt;
 }
 
-@media only screen and (max-width: 640px) {
-	.head .left,.right {
-		float: none;
-	}
+.applicantList {
+	background: white;
+	border-style: solid;
+	border-width: 0.3pt;
+	border-color: #CDC7C5;
+	width: 90%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
 
-	.head .left {
-		display: block;
-		margin: 0 auto;
-		text-align: center;
-	}
-
-	.available {
-		display: block;
-		margin: 0 auto;
-	}
-
-	.head .right {
-		display: block;
-		margin: 10px auto;
-		width: 100%;
-		text-align: center;
-	}
+.applicantDisplay {
+	display: block;
+	margin: 0 auto;
+	height: 200px;
+	width: 90%;
+	margin-bottom: 0;
+	margin-top: 0;
 }
 
 .noJobs {
@@ -91,25 +87,6 @@ body {
 	height: auto;
 }
 
-.applicantList {
-	background: white;
-	border-style: solid;
-	border-width: 0.3pt;
-	border-color: #CDC7C5;
-	width: 1000px;
-	height: auto;
-	margin-left: 130px;
-	margin-top: 50px;
-}
-
-.applicantDisplay {
-	height: 200px;
-	width: 800px;
-}
-
-.applicantDisplay: hover {
-	background: black;
-}
 
 .userInfo {
 	float: left;
@@ -126,11 +103,6 @@ body {
 #userLocatation {
 	margin-left: 0;
 	font-size: 14pt;
-}
-
-.applicantDisplay {
-	margin-bottom: 0;
-	margin-top: 0;
 }
 
 hr {
@@ -165,3 +137,48 @@ hr {
 #error-message {
 	color: red;
 }
+
+@media only screen and (max-width: 640px) {
+	.head .left,.right {
+		float: none;
+	}
+
+	.head .left {
+		display: block;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.available {
+		display: block;
+		margin: 0 auto;
+	}
+
+	.head .right {
+		display: block;
+		margin: 10px auto;
+		width: 100%;
+		text-align: center;
+	}
+
+	.tag {
+		display: none;
+	}
+
+	.accept {
+		float: none;
+		display: block;
+		margin: 0 auto;
+	}
+
+	.userInfo {
+		float: none;
+		display: block;
+		margin: 40px auto;
+ 	}
+
+ 	.applicantList {
+ 		margin-bottom: 20px;
+ 	}
+}
+
