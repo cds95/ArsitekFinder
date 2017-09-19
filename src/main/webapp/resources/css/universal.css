@@ -21,22 +21,28 @@ body {
 
 .tag {
 	float: left;
-    margin-left: 10px;
-    margin-bottom: 5px;
-    background-color: black;
-    color: white;
-    border-radius: 25px;
-    height: 40px;
-    width: 110px;
-    text-align: center;
-    padding-top: 9px;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	background-color: black;
+	color: white;
+	border-radius: 25px;
+	height: 40px;
+	width: 110px;
+	text-align: center;
+	padding-top: 9px;
+}
+
+.navbar .container-fluid {
+	padding: 0 75px;
 }
 
 @media only screen and (max-width: 640px) {
-    .navbar-toggle {
-   		position: absolute;
-   		top: 0;
-   		left: 270px;
-   }
-
+	.navbar-toggle {
+		position: absolute;
+		top: 0;
+		left: 270px;
+	}
+	.navbar-header {
+		display: none;
+	}
 }

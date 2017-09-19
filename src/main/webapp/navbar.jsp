@@ -16,9 +16,6 @@
 <body>
 	<nav class="navbar navbar-inverse">
          <div class="container-fluid">
-            <div class="navbar-header">
-               <a class="navbar-brand" href="#">JobFinder</a>
-            </div>
             <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
       			<span class="icon-bar"></span>
 		        <span class="icon-bar"></span>

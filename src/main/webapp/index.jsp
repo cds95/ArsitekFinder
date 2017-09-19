@@ -32,7 +32,7 @@
          <div class="container-fluid" id="head">
             <div class="information" id="signup">
                <div class="header">
-                  <h2>Find an Architect Today!</h2>
+                  <img id="logo" src="http://localhost:8080/Freelance/resources/images/Logo.jpg" alt="hsd logo">
                </div>
                <a href="https://jh-studio.herokuapp.com/jobs">Start Browsing For Jobs</a>
             </div>

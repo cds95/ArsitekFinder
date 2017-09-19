@@ -82,6 +82,12 @@ a:hover {
 	margin: 10px auto;
 }
 
+
+#logo {
+	width: 30%;
+	margin-bottom: 40px;
+}
+
 @media only screen and (max-width: 640px) {
 	#error {
 		margin-top: 15px;
@@ -94,5 +100,10 @@ a:hover {
 
 	#error ul li {
 		font-size: 11pt;
+	}
+
+	#logo {
+		margin-top: 100px;
+		width: 100%;
 	}
 }
