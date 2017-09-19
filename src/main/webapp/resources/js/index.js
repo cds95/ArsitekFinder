@@ -59,7 +59,7 @@ $(document).ready(function() {
 				errorList.append('<li id=\'email-error\'>Please enter a valid email</li>');
 			}
 			if(handle == "") {
-				errorList.append('<li id=\'handle-error\'>Please enter username</li>');
+				errorList.append('<li id=\'handle-error\'>Please enter a username</li>');
 			}
 			if(password == "") {
 				errorList.append('<li id=\'password-error\'>Please enter a password</li>');
