@@ -32,7 +32,7 @@
          <div class="container-fluid" id="head">
             <div class="information" id="signup">
                <div class="header">
-                  <img id="logo" src="http://localhost:8080/Freelance/resources/images/Logo.jpg" alt="hsd logo">
+                  <img id="logo" src="https://jh-studio.herokuapp.com/resources/images/Logo.jpg" alt="hsd logo">
                </div>
                <a href="https://jh-studio.herokuapp.com/jobs">Start Browsing For Jobs</a>
             </div>
