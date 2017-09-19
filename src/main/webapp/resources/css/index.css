@@ -44,6 +44,7 @@ a:hover {
 
 .signup {
 	text-align: center;
+	margin-bottom: 100px;
 }
 
 #wait {
@@ -61,4 +62,37 @@ a:hover {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+#error {
+	display: none;
+	margin: 10px auto;
+	width: 20%;
+	background: #F1948A;
+	color: white;
+	padding: 15px;
+}
+
+#error p {
+	font-size: 15pt;
+}
+
+#submit {
+	display: block;
+	margin: 10px auto;
+}
+
+@media only screen and (max-width: 640px) {
+	#error {
+		margin-top: 15px;
+		width: 75%;
+	}
+	
+	#error p {
+		font-size: 13pt;
+	}
+
+	#error ul li {
+		font-size: 11pt;
+	}
 }

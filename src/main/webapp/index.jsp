@@ -80,6 +80,12 @@
                   </div>
                </form>
                <button id="submit" class="btn btn-default">Sign Up</button>
+               <div id="error">
+               		<p>Please correct the following errors</p>
+               		<ul id="error-list">
+               		
+               		</ul>
+               </div>
                <div id="wait"></div>
             </div>
          </div>

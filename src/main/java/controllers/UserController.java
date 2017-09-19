@@ -31,74 +31,109 @@ import Entities.User;
 
 /**
  * Defines all the user login, logout, and signup behavior
+ * 
  * @author christopherdimitrisastropranoto
  *
  */
 @Controller
 public class UserController {
-	
+
 	/**
 	 * Logs user out
+	 * 
 	 * @param session
 	 * @return
 	 */
 	@RequestMapping("logout")
-	public String logout(HttpSession session)  {
+	public String logout(HttpSession session) {
 		session.removeAttribute("user");
 		return "index.jsp";
 	}
-	
+
 	/**
 	 * Registers a new user into the database
+	 * 
 	 * @param request
 	 * @param response
 	 * @return
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	@RequestMapping(value="register", method = RequestMethod.POST)
-	public void registerUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+	@RequestMapping(value = "register", method = RequestMethod.POST)
+	public void registerUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
-		if(manager == null) {
-			manager = new DatabaseManager(); // Takes care of case when this is first page user visits
+		if (manager == null) {
+			manager = new DatabaseManager(); // Takes care of case when this is
+												// first page user visits
 		}
-		User user = new User();
 		String first = request.getParameter("first");
 		String last = request.getParameter("last");
 		String handle = request.getParameter("handle");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-		
-		String hashedPassword = Security.generateHash(password);
-		
+		if (!this.userExists(handle, manager)) {
+			String hashedPassword = Security.generateHash(password);
+			User user = this.createNewUser(first, last, handle, hashedPassword, email);
+			manager.addUser(user);
+			request.getSession().setAttribute("user", user);
+			response.getWriter().write("success");
+		} else {
+			response.getWriter().write("fail");
+		}
+	}
+	
+	/**
+	 * Creates a new user given the input information and returns the user object
+	 * @param first
+	 * @param last
+	 * @param handle
+	 * @param hashedPassword
+	 * @param email
+	 * @return
+	 */
+	private User createNewUser(String first, String last, String handle, String hashedPassword, String email) {
+		User user = new User();
 		user.setFirst(first);
 		user.setLast(last);
 		user.setHandle(handle);
 		user.setPassword(hashedPassword);
-		user.setEmail(email);
-		manager.addUser(user);
-		
-		request.getSession().setAttribute("user", user);
-		response.getWriter().write("success");
+		user.setEmail(email);user.setFirst(first);
+		return user;
 	}
+	
+	/**
+	 * Checks if a user with the given handle exists in the system.  Returns true if
+	 * user is present, and false otherwise
+	 * @param handle
+	 * @param manager
+	 * @return
+	 */
+	private boolean userExists(String handle, DatabaseManager manager) {
+		return manager.getUser(handle) != null;
+	}
+
 	/**
 	 * Removes a user's skill
+	 * 
 	 * @param request
 	 * @param response
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	@RequestMapping(value="removeusertag", method = RequestMethod.POST)
-	public void removeUserTag(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@RequestMapping(value = "removeusertag", method = RequestMethod.POST)
+	public void removeUserTag(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
 		int tid = Integer.parseInt(request.getParameter("id"));
 		Tags tag = manager.getTag(tid);
 		User user = (User) request.getSession().getAttribute("user");
 		manager.deleteUserTag(user, tag);
 	}
-	
+
 	/**
 	 * Adds user tags
+	 * 
 	 * @param request
 	 * @param response
 	 * @throws ServletException
@@ -106,7 +141,8 @@ public class UserController {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping("addusertag")
-	public void updateUserSkills(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void updateUserSkills(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
 		PrintWriter writer = response.getWriter();
 		User user = (User) request.getSession().getAttribute("user");
@@ -114,11 +150,11 @@ public class UserController {
 		Tags skills = manager.getTag(skill);
 		JSONObject json = new JSONObject();
 		response.setContentType("application/json");
-		if(user.getSkills().size() <= 5) {
+		if (user.getSkills().size() <= 5) {
 			manager.addUserSkill(user, skills);
 			json.put("status", "success");
 			json.put("tid", skills.getTid());
-		} else if(user.containsTag(skills)){
+		} else if (user.containsTag(skills)) {
 			json.put("status", "contains");
 		} else {
 			json.put("status", "fail");
@@ -126,14 +162,15 @@ public class UserController {
 		writer.print(json);
 		writer.flush();
 	}
-	
+
 	/**
 	 * Takes care of Post request to upload user resume
+	 * 
 	 * @param request
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping(value="uploadresume", method = RequestMethod.POST)
+	@RequestMapping(value = "uploadresume", method = RequestMethod.POST)
 	public void updateUserResume(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
 		User user = (User) request.getSession().getAttribute("user");

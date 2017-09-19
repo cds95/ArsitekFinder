@@ -238,7 +238,7 @@ public class JobsController {
 			manager = new DatabaseManager();
 		}
 		String fileName = manager.getApplicationFile(id);
-		fileManager.downloadFromAzure(home +"\\Downloads\\", fileName);
+		fileManager.downloadFromAzure(home + "\\Downloads\\", fileName);
 	}
 
 	/**

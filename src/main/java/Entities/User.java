@@ -39,47 +39,33 @@ public class User {
 		this.skills = new LinkedList<Tags>();
 		this.applications = new LinkedList<Applicant>();
 	}
-
 	public int getUid() {
 		return uid;
 	}
-
-
-
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
-
-
-
 	public String getFirst() {
 		return first;
 	}
-
 	public void setFirst(String first) {
 		this.first = first;
 	}
-
 	public String getLast() {
 		return last;
 	}
-
 	public void setLast(String last) {
 		this.last = last;
 	}
-
 	public String getHandle() {
 		return handle;
 	}
-
 	public void setHandle(String handle) {
 		this.handle = handle;
 	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -111,7 +97,6 @@ public class User {
 	public Location getLocation() {
 		return location;
 	}
-
 	public void setLocation(Location location) {
 		this.location = location;
 	}
