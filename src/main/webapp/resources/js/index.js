@@ -27,7 +27,7 @@ $(document).ready(function() {
 		if(errorList.has()) {
 			errorList.empty();
 		}
-		if(first != "" && last != "") {
+		if(first != "" && last != "" && email != "" && handle != "" && password != "" ) {
 			$.ajax({
 				type : "POST",
 				url : "https://jh-studio.herokuapp.com/register",
@@ -65,6 +65,6 @@ $(document).ready(function() {
 				errorList.append('<li id=\'password-error\'>Please enter a password</li>');
 			}
 		}
-	
 	});
+	
 });
