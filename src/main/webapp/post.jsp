@@ -110,7 +110,6 @@
          			<button id="update">Update Job</button>
          		</c:otherwise>
          	</c:choose>
-         	<button id="update">Update Job</button>
          </div>
       </div>
    </body>
