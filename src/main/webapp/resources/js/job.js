@@ -60,7 +60,7 @@ $(document).ready(function() {
 	$("#add").click(function() {
 		var skillString = $("#skill").val();
 		$.ajax({
-			url: "https://jh-studio.herokuapp.com/job/add",
+			url: "http://www.hsd-studio.com/job/add",
 			type: "POST",
 			data: {
 				jid: $("#jid").text(),
@@ -102,7 +102,7 @@ $(document).ready(function() {
 	function removeTag(rem) {
 		var remParent = rem.parent();
 		$.ajax({
-			url: "https://jh-studio.herokuapp.com/job/remove",
+			url: "http://www.hsd-studio.com/job/remove",
 			type: "POST",
 			data: {
 				id: remParent.attr('id'),

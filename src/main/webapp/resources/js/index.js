@@ -30,7 +30,7 @@ $(document).ready(function() {
 		if(first != "" && last != "" && email != "" && handle != "" && password != "" ) {
 			$.ajax({
 				type : "POST",
-				url : "https://jh-studio.herokuapp.com/register",
+				url : "http://www.hsd-studio.com/register",
 				data : {
 					'first' : first,
 					'last' : last,
@@ -40,7 +40,7 @@ $(document).ready(function() {
 				},
 				success : function(res) {
 					if(res == 'success') {
-						window.location = "https://jh-studio.herokuapp.com/profile?handle=" + handle;
+						window.location = "http://www.hsd-studio.com/profile?handle=" + handle;
 					} else {
 						errorDiv.css('display', 'block');
 						errorList.append('<li id=\'same-handle-error\'>Username already taken</li>');

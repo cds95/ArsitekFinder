@@ -23,7 +23,7 @@ $(document).ready(function() {
 	 */
 	function filterJob(text) {
 		$.ajax({
-			url: "https://jh-studio.herokuapp.com/jobs/filter",
+			url: "http://www.hsd-studio.com/jobs/filter",
 			type: "GET",
 			data: {
 				type: text
@@ -45,7 +45,7 @@ $(document).ready(function() {
 	$(".remove").click(function() {
 		var jid = $(this).attr('id');
 		$.ajax({
-			url: "https://jh-studio.herokuapp.com/remove",
+			url: "http://www.hsd-studio.com/remove",
 			type: "POST",
 			data: {
 				type: 'close',

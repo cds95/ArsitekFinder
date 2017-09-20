@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 .jumbotron {
-	background-image: url("https://jh-studio.herokuapp.com/resources/images/apt4.jpg");
+	background-image: url("http://www.hsd-studio.com/resources/images/apt4.jpg");
 	background-size: cover;
 	background-position: 10%;
 }

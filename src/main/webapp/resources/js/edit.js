@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$("#save").click(function() {
 		$.ajax({
 			type : "POST",
-			url : "https://jh-studio.herokuapp.com/edit/save",
+			url : "http://www.hsd-studio.com/edit/save",
 			data : {
 				'first' : $('#first').val(),
 				'last' : $('#last').val(),
@@ -22,7 +22,7 @@ $(document).ready(function() {
 		});
 	});
 	
-	var redirect = 'https://jh-studio.herokuapp.com/profile?handle=' + $('#handle').text(); //URL to redirect to
+	var redirect = 'http://www.hsd-studio.com/profile?handle=' + $('#handle').text(); //URL to redirect to
 	
 	/**
 	 * Show message when invalid save

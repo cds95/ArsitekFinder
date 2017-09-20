@@ -8,7 +8,7 @@ $(document).ready(function() {
 		var pass = $('#password').val();
 		$.ajax({
 			type : "POST",
-			url : "https://jh-studio.herokuapp.com/logging",
+			url : "http://www.hsd-studio.com/logging",
 			data : {
 				'username' : user,
 				'password' : pass
@@ -42,7 +42,7 @@ $(document).ready(function() {
 				target.appendChild(div);
 			}
 		} else {
-			window.location='https://jh-studio.herokuapp.com';
+			window.location='http://www.hsd-studio.com/';
 		}
 	}
 });

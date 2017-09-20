@@ -13,7 +13,7 @@ $(document).ready(
 			$("#update").click(function() {
 				var jid = $("#jid").text();
 				$.ajax({
-					url : "https://jh-studio.herokuapp.com/editinfo",
+					url : "http://www.hsd-studio.com/editinfo",
 					type : "POST",
 					data : {
 						jid : jid,
@@ -38,7 +38,7 @@ $(document).ready(
 					createError("Please enter what skills are required for the job");
 				} else {
 					$.ajax({
-						url : "https://jh-studio.herokuapp.com/postjob",
+						url : "http://www.hsd-studio.com/postjob",
 						type : "POST",
 						data : {
 							description : $("#description").val(),

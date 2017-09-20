@@ -11,7 +11,7 @@ $(document).ready(function() {
 		var message = $("#message").val();
 		$.ajax({
 			type : "POST",
-			url : "https://jh-studio.herokuapp.com/contactus",
+			url : "http://www.hsd-studio.com/contactus",
 			data : {
 				'name': name,
 				'email': email,

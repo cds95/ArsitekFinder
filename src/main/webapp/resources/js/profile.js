@@ -13,7 +13,7 @@ $(document).ready(function() {
 		var errMessage = document.createElement('div');
 		errMessage.setAttribute('id', 'error-message');
 		$.ajax({
-			url: "https://jh-studio.herokuapp.com/addusertag",
+			url: "http://www.hsd-studio.com/addusertag",
 			type: "POST",
 			data: {
 				skill: skillString

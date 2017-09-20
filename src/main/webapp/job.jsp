@@ -36,7 +36,7 @@
       	 	<c:choose>
             <c:when test="${empty user}">
                <h5>Please login or make an account to apply for a job</h5>
-               <a href="https://jh-studio.herokuapp.com/login">Go to Login Page</a>
+               <a href="http://www.hsd-studio.com/login">Go to Login Page</a>
             </c:when>
             <c:otherwise>
                <form action="registerjob" enctype="multipart/form-data" method="post" id="applyForm">
@@ -60,7 +60,7 @@
          <div class="container-fluid">
             <p>Job ID: <span id="jid">${job.jid}</span></p>
             <c:if test="${user.handle == 'admin'}">
-            	<a class="edit" href="https://jh-studio.herokuapp.com/editjob?jid=${job.jid}"><span class="glyphicon glyphicon-pencil"></span></a>
+            	<a class="edit" href="http://www.hsd-studio.com/editjob?jid=${job.jid}"><span class="glyphicon glyphicon-pencil"></span></a>
             </c:if>
             <div class="description">
                <div class="projectDescription" >
@@ -119,7 +119,7 @@
                               <c:forEach items="${applicants}" var="app">
                                  <div class="applicantDisplay">
                                     <div class="userInfo">
-                                       <p id="userName"><a href="https://jh-studio.herokuapp.com/profile?uid=${app.user.uid}">${app.user.first} ${app.user.last} </a></p>
+                                       <p id="userName"><a href="http://www.hsd-studio.com/profile?uid=${app.user.uid}">${app.user.first} ${app.user.last} </a></p>
                                        <p id="userLocation">${app.user.location.city}, ${app.user.location.state}, ${app.user.location.country}</p>
                                        <c:forEach items="${app.user.skills}" var="skill">
                                           <div class="tag">${skill.skill}</div>

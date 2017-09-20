@@ -274,10 +274,7 @@ public class JobsController {
 			manager = new DatabaseManager();
 		}
 		Job job = manager.getJob(jid);
-		job.setJobTitle(title);
-		job.setDescription(desc);
-		job.setType(type);
-		job.setPrice(price);
+		manager.updateJob(job, title, desc, type, price);
 		response.getWriter().write("success");
 	}
 

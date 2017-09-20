@@ -601,4 +601,21 @@ public class DatabaseManager {
 		tx.commit();
 	}
 	
+	/**
+	 * Updates a jobs information and returns it
+	 * @param job
+	 * @param title
+	 * @param desc
+	 * @param type
+	 * @param price
+	 */
+	public void updateJob(Job job, String title, String desc, String type, int price) {
+		Transaction tx = this.session.beginTransaction();
+		job.setJobTitle(title);
+		job.setDescription(desc);
+		job.setType(type);
+		job.setPrice(price);
+		this.session.save(job);
+		tx.commit();
+	}
 }

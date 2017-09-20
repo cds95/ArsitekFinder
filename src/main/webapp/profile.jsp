@@ -32,7 +32,7 @@
       <%@ include file = "navbar.jsp" %>
       <div class="userInfo">
       	<c:if test="${sessionUserId eq selectUserId}">
-      		<a class="edit" href="https://jh-studio.herokuapp.com/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+      		<a class="edit" href=http://www.hsd-studio.com/edit"><span class="glyphicon glyphicon-pencil"></span></a>
       	</c:if>
          <div class="userInfoTop">
             <div class="basicUserInfo">
@@ -68,7 +68,7 @@
       </div>
       <div class="right">
       	<c:if test="${sessionUserId eq selectUserId}">
-      		<a class="edit" href="https://jh-studio.herokuapp.com/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+      		<a class="edit" href="http://www.hsd-studio.com/edit"><span class="glyphicon glyphicon-pencil"></span></a>
       	</c:if>
          <h4 id="contact-header">My Contact Information</h4>
          <p class="contactInfo">Email:   <a href="#">${selectedUser.email}</a></p>

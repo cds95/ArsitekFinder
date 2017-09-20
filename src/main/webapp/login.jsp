@@ -45,7 +45,7 @@
   				</div>
   				<div class="form-group"> 
     				<div class="col-sm-offset-2 col-sm-10">
-						<a href="https://jh-studio.herokuapp.com/index.jsp#drop">Sign Up</a>
+						<a href="http://www.hsd-studio.com/index.jsp#drop">Sign Up</a>
     				</div>
   				</div>
   				<div class="form-group"> 

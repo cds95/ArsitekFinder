@@ -28,21 +28,21 @@
 			</button>
 			<div class="collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav">
-					<li><a href="https://jh-studio.herokuapp.com/">Home</a></li>
-					<li><a href="https://jh-studio.herokuapp.com/jobs">Browse</a></li>
-					<li><a href="https://jh-studio.herokuapp.com/contact">Contact
+					<li><a href="http://www.hsd-studio.com/">Home</a></li>
+					<li><a href="http://www.hsd-studio.com/jobs">Browse</a></li>
+					<li><a href="http://www.hsd-studio.com/contact">Contact
 							Us</a></li>
 					<c:if test="${user.handle == 'admin'}">
-						<li><a href="https://jh-studio.herokuapp.com/post">Post
+						<li><a href="http://www.hsd-studio.com/post">Post
 								Job</a></li>
 					</c:if>
 				</ul>
 				<c:choose>
 					<c:when test="${empty user}">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="https://jh-studio.herokuapp.com#drop"><span
+							<li><a href="http://www.hsd-studio.com#drop"><span
 									class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-							<li><a href="https://jh-studio.herokuapp.com/login"><span
+							<li><a href="http://www.hsd-studio.com/login"><span
 									class="glyphicon glyphicon-log-in"></span> Login</a></li>
 						</ul>
 					</c:when>
@@ -54,9 +54,9 @@
 								<span class="caret"></span>
 								<ul class="dropdown-menu">
 									<li><a
-										href="https://jh-studio.herokuapp.com/profile?handle=${user.handle}">My
+										href="http://www.hsd-studio.com/profile?handle=${user.handle}">My
 											Profile</a></li>
-									<li><a href="https://jh-studio.herokuapp.com/logout">Logout</a></li>
+									<li><a href="http://www.hsd-studio.com/logout">Logout</a></li>
 								</ul></li>
 						</ul>
 					</c:otherwise>

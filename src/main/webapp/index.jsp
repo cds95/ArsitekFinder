@@ -32,9 +32,9 @@
          <div class="container-fluid" id="head">
             <div class="information" id="signup">
                <div class="header">
-                  <img id="logo" src="https://jh-studio.herokuapp.com/resources/images/Logo.jpg" alt="hsd logo">
+                  <img id="logo" src="http://www.hsd-studio.com/resources/images/Logo.jpg" alt="hsd logo">
                </div>
-               <a href="https://jh-studio.herokuapp.com/jobs">Start Browsing For Jobs</a>
+               <a href="http://www.hsd-studio.com/jobs">Start Browsing For Jobs</a>
             </div>
          </div>
       </div>
