@@ -8,7 +8,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-      <title>Home</title>
+      <title>${job.jobTitle}</title>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -29,7 +29,7 @@
       <c:set var="userJob" value="${job.employer}"/>
       <c:set var="currUser" value="${user.handle}"/>
       <%@ include file = "navbar.jsp" %>
-      <div id="applicationForm">
+      <div id="applicationForm">		
       	 <h3>${job.jobTitle}</h3>
       	 <h5>Please upload a sample of your work to continue</h5>
       	 <div id="formBody">
@@ -59,6 +59,7 @@
       <div class="jumbotron">
          <div class="container-fluid">
             <p>Job ID: <span id="jid">${job.jid}</span></p>
+             <a class="edit" href="https://jh-studio.herokuapp.com/editjob"><span class="glyphicon glyphicon-pencil"></span></a>
             <div class="description">
                <div class="projectDescription" >
                   <h5 class="headers">Project Description</h5>
@@ -99,7 +100,6 @@
                         <c:if test="${user.checkApplied(job) == false || empty user}">
                            <button type="button" class="btn btn-success applyButton">Apply</button>
                         </c:if>
-                        
                      </div>
                   </c:when>
                   <c:otherwise>

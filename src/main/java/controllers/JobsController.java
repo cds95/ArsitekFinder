@@ -235,6 +235,27 @@ public class JobsController {
 		String fileName = manager.getApplicationFile(id);
 		fileManager.downloadFromAzure(home + "\\Downloads\\", fileName);
 	}
+	
+	/**
+	 * Brings job to edit job page
+	 * @param id
+	 * @param session
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws StorageException
+	 */
+	@RequestMapping(value="/editjob", method = RequestMethod.POST)
+	public ModelAndView updateJob(@RequestParam("jid") int id, HttpSession session) throws FileNotFoundException, StorageException {
+		DatabaseManager manager = (DatabaseManager) session.getAttribute("manager");
+		if(manager == null){
+			manager = new DatabaseManager();
+		}
+		Job job = manager.getJob(id);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("job", job);
+		mv.setViewName("post.jsp");
+		return mv;
+	}
 
 	/**
 	 * Creates a new job entity

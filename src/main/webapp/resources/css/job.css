@@ -148,6 +148,12 @@ pre {
 	white-space: pre-wrap;
 }
 
+
+.edit {
+	float: right;
+	margin-right: 50px;
+}
+
 @media only screen and (max-width: 640px) {
 	pre {
 		font-size: 8pt;

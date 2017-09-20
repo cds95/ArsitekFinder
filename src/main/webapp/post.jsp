@@ -9,7 +9,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-      <title>Home</title>
+      <title>Post</title>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -28,22 +28,46 @@
       <script src="js/post.js"></script>
    </head>
    <body>
+   
       <%@ include file = "navbar.jsp" %>
+      <c:set var="job" value="${job}"></c:set>
       <div class="container">
          <h2>Fill out the form below to post a job</h2>
          <form>
             <div class="form-group">
                <label>Job Title:</label>
-               <input type="text" class="form-control" id="title">
+               <c:choose>
+               	<c:when test="${job eq null}">
+               		<input type="text" class="form-control" id="title">
+               	</c:when>
+               	<c:otherwise>
+               		<input type="text" class="form-control" id="title" placeholder="${job.jobTitle}">
+               	</c:otherwise>
+               </c:choose>
             </div>
             <div class="form-group">
                <label for="comment">Job Description:</label>
-               <textarea class="form-control" rows="5" id="description" placeholder="Maximum of 1000 characters" ></textarea>
+                <c:choose>
+               	<c:when test="${job eq null}">
+               		<textarea class="form-control" rows="5" id="description" placeholder="Maximum of 1000 characters" ></textarea>
+               	</c:when>
+               	<c:otherwise>
+               		<textarea class="form-control" rows="5" id="description" placeholder="${job.description}" ></textarea>
+               	</c:otherwise>
+               </c:choose>
+               
             </div>
             <div class="form-group row">
                <div class="col-md-4 form-inline">
-                  <label>Cost Per Page (IDR):</label>
-                  <input type="text" id="price">
+                  <label>Cost Per Page (IDR):</label> 
+                   <c:choose>
+               	<c:when test="${job eq null}">
+               		 <input type="text" id="price">
+               	</c:when>
+               	<c:otherwise>
+               		 <input type="text" id="price" placeholder=${job.price}>
+               	</c:otherwise>
+               </c:choose>
                </div>
                <div class="col-md-4 form-inline">
                   <label for="sel1">Type of Job:</label>
@@ -71,7 +95,14 @@
             <div id="displaySkills"></div>
          </form>
          <div>
-        	<button id="sub">Submit</button>
+         	<c:choose>
+         		<c:when test="${job eq null}">
+         			<button id="sub">Submit</button>
+         		</c:when>
+         		<c:otherwise>
+         			<button id="sub">Update Job</button>
+         		</c:otherwise>
+         	</c:choose>
          </div>
       </div>
    </body>
