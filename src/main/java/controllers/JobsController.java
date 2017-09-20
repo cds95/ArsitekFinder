@@ -258,26 +258,22 @@ public class JobsController {
 	}
 	
 	/**
-	 * Updates a job
+	 * Updates job information
 	 * @param request
 	 */
 	@RequestMapping(value="/editjobinfo", method = RequestMethod.POST)
 	public void editJobInfo(HttpServletRequest request) {
 		int jid = Integer.parseInt(request.getParameter("jid"));
-		String jobTitle = request.getParameter("title");
 		String desc = request.getParameter("description");
-		int price = Integer.parseInt(request.getParameter("price"));
+		String title = request.getParameter("title");
 		String type = request.getParameter("type");
+		int price = Integer.parseInt(request.getParameter("price"));
 		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
-		if (manager == null) {
-			manager = new DatabaseManager();
-			request.getSession().setAttribute("manager", manager);
-		}
 		Job job = manager.getJob(jid);
-		job.setJobTitle(jobTitle);
+		job.setJobTitle(title);
 		job.setDescription(desc);
-		job.setPrice(price);
 		job.setType(type);
+		job.setPrice(price);
 	}
 
 	/**

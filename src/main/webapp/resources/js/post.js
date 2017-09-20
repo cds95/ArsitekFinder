@@ -7,6 +7,9 @@ $(document).ready(
 			var tags = [];
 			var counter = 0; //Tracks how many skills have been added
 			
+			/**
+			 * Sends request to update a particular job
+			 */
 			$("#update").click(function() {
 				var jid = $("#jid").text();
 				$.ajax({
@@ -18,7 +21,6 @@ $(document).ready(
 						title : $("#title").val(),
 						price : $("#price").val(),
 						type : $("#type").val(),
-						location : $("#loc").val(),
 					}, success : function() {
 						alert("Successfully Edited Job");
 					}
