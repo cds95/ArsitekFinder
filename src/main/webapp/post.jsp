@@ -59,7 +59,7 @@
                		<textarea class="form-control" rows="5" id="description" placeholder="Maximum of 1000 characters" ></textarea>
                	</c:when>
                	<c:otherwise>
-               		<textarea class="form-control" rows="5" id="description" value="${job.description}" ></textarea>
+               		<textarea class="form-control" rows="5" id="description" >${job.description}</textarea>
                	</c:otherwise>
                </c:choose>
                
