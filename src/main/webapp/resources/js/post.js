@@ -19,6 +19,8 @@ $(document).ready(
 						price : $("#price").val(),
 						type : $("#type").val(),
 						location : $("#loc").val(),
+					}, success : function() {
+						alert("Successfully Edited Job");
 					}
 				});
 			});
