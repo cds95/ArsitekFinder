@@ -260,20 +260,25 @@ public class JobsController {
 	/**
 	 * Updates job information
 	 * @param request
+	 * @throws IOException 
 	 */
-	@RequestMapping(value="/editjobinfo", method = RequestMethod.POST)
-	public void editJobInfo(HttpServletRequest request) {
+	@RequestMapping(value="/editinfo", method = RequestMethod.POST)
+	public void editJobInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int jid = Integer.parseInt(request.getParameter("jid"));
 		String desc = request.getParameter("description");
 		String title = request.getParameter("title");
 		String type = request.getParameter("type");
 		int price = Integer.parseInt(request.getParameter("price"));
 		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
+		if(manager == null) {
+			manager = new DatabaseManager();
+		}
 		Job job = manager.getJob(jid);
 		job.setJobTitle(title);
 		job.setDescription(desc);
 		job.setType(type);
 		job.setPrice(price);
+		response.getWriter().write("success");
 	}
 
 	/**

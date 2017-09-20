@@ -13,7 +13,7 @@ $(document).ready(
 			$("#update").click(function() {
 				var jid = $("#jid").text();
 				$.ajax({
-					url : "https://jh-studio.herokuapp.com/editjobinfo",
+					url : "https://jh-studio.herokuapp.com/editinfo",
 					type : "POST",
 					data : {
 						jid : jid,
@@ -21,8 +21,10 @@ $(document).ready(
 						title : $("#title").val(),
 						price : $("#price").val(),
 						type : $("#type").val(),
-					}, success : function() {
-						alert("Successfully Edited Job");
+					}, success : function(res) {
+						if(res == 'success') {
+							alert('Job Successfully Updated');
+						}
 					}
 				});
 			});
