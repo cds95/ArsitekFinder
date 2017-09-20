@@ -244,7 +244,7 @@ public class JobsController {
 	 * @throws FileNotFoundException
 	 * @throws StorageException
 	 */
-	@RequestMapping(value="/editjob", method = RequestMethod.POST)
+	@RequestMapping(value="/editjob")
 	public ModelAndView updateJob(@RequestParam("jid") int id, HttpSession session) throws FileNotFoundException, StorageException {
 		DatabaseManager manager = (DatabaseManager) session.getAttribute("manager");
 		if(manager == null){
