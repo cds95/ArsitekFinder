@@ -7,6 +7,25 @@ $(document).ready(
 			var tags = [];
 			var counter = 0; //Tracks how many skills have been added
 			
+			$("#update").click(function() {
+				var jid = $("#jid").text();
+				$.ajax({
+					url : "https://jh-studio.herokuapp.com/editjobinfo",
+					type : "POST",
+					data : {
+						jid : jid,
+						description : $("#description").val(),
+						title : $("#title").val(),
+						price : $("#price").val(),
+						type : $("#type").val(),
+						location : $("#loc").val(),
+					},
+					success : function() {
+						window.location='https://jh-studio.herokuapp.com/job?jid=' + jid;
+					}
+				});
+			});
+			
 			/**
 			 * Submits the job into the database.  User must submit at least one skill to post the job
 			 */
@@ -17,7 +36,7 @@ $(document).ready(
 				} else {
 					$.ajax({
 						url : "https://jh-studio.herokuapp.com/postjob",
-						type : "GET",
+						type : "POST",
 						data : {
 							description : $("#description").val(),
 							title : $("#title").val(),

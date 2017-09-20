@@ -150,7 +150,7 @@ public class JobsController {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	@RequestMapping("/postjob")
+	@RequestMapping(value="/postjob", method = RequestMethod.POST)
 	public void postJob(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jobTitle = request.getParameter("title");
 		String desc = request.getParameter("description");
@@ -255,6 +255,29 @@ public class JobsController {
 		mv.addObject("job", job);
 		mv.setViewName("post.jsp");
 		return mv;
+	}
+	
+	/**
+	 * Updates a job
+	 * @param request
+	 */
+	@RequestMapping(value="/editjobinfo", method = RequestMethod.POST)
+	public void editJobInfo(HttpServletRequest request) {
+		int jid = Integer.parseInt(request.getParameter("jid"));
+		String jobTitle = request.getParameter("title");
+		String desc = request.getParameter("description");
+		int price = Integer.parseInt(request.getParameter("price"));
+		String type = request.getParameter("type");
+		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
+		if (manager == null) {
+			manager = new DatabaseManager();
+			request.getSession().setAttribute("manager", manager);
+		}
+		Job job = manager.getJob(jid);
+		job.setJobTitle(jobTitle);
+		job.setDescription(desc);
+		job.setPrice(price);
+		job.setType(type);
 	}
 
 	/**

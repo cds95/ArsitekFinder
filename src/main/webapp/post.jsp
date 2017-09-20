@@ -32,7 +32,14 @@
       <%@ include file = "navbar.jsp" %>
       <c:set var="job" value="${job}"></c:set>
       <div class="container">
-         <h2>Fill out the form below to post a job</h2>
+      	<c:choose>
+      		<c:when test="${job eq null}">
+      			<h2>Fill out the form below to post a job</h2>
+      		</c:when>
+      		<c:otherwise>
+      			<h2>Editing Job Number: <span id="jid">${job.jid}</span></h2>
+      		</c:otherwise>
+      	</c:choose>
          <form>
             <div class="form-group">
                <label>Job Title:</label>
@@ -41,7 +48,7 @@
                		<input type="text" class="form-control" id="title">
                	</c:when>
                	<c:otherwise>
-               		<input type="text" class="form-control" id="title" placeholder="${job.jobTitle}">
+               		<input type="text" class="form-control" id="title" value="${job.jobTitle}">
                	</c:otherwise>
                </c:choose>
             </div>
@@ -52,7 +59,7 @@
                		<textarea class="form-control" rows="5" id="description" placeholder="Maximum of 1000 characters" ></textarea>
                	</c:when>
                	<c:otherwise>
-               		<textarea class="form-control" rows="5" id="description" placeholder="${job.description}" ></textarea>
+               		<textarea class="form-control" rows="5" id="description" value="${job.description}" ></textarea>
                	</c:otherwise>
                </c:choose>
                
@@ -65,7 +72,7 @@
                		 <input type="text" id="price">
                	</c:when>
                	<c:otherwise>
-               		 <input type="text" id="price" placeholder=${job.price}>
+               		 <input type="text" id="price" value=${job.price}>
                	</c:otherwise>
                </c:choose>
                </div>
@@ -100,7 +107,7 @@
          			<button id="sub">Submit</button>
          		</c:when>
          		<c:otherwise>
-         			<button id="sub">Update Job</button>
+         			<button id="update" formaction="https://jh-studio.herokuapp.com/job?jid=${job.jid}">Update Job</button>
          		</c:otherwise>
          	</c:choose>
          </div>
