@@ -63,7 +63,7 @@
                <div class="projectDescription" >
                   <h5 class="headers">Project Description</h5>
                   <br>
-                  <p>${job.description}</p>
+                  <pre>${job.description}</pre>
                </div>
                <hr>
                <div class="skillsRequired">

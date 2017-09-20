@@ -1,10 +1,7 @@
 package controllers;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -27,12 +24,10 @@ import com.microsoft.azure.storage.StorageException;
 
 import Data.DatabaseManager;
 import Data.FileManager;
-import Entities.Applicant;
 import Entities.Job;
 import Entities.Tags;
 import Entities.User;
 
-import java.nio.channels.Channels;
 
 @Controller
 public class JobsController {
