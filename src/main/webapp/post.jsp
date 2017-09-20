@@ -107,7 +107,7 @@
          			<button id="sub">Submit</button>
          		</c:when>
          		<c:otherwise>
-         			<button id="update" formaction="https://jh-studio.herokuapp.com/job?jid=${job.jid}">Update Job</button>
+         			<button id="update">Update Job</button>
          		</c:otherwise>
          	</c:choose>
          </div>
