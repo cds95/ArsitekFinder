@@ -262,7 +262,7 @@ public class JobsController {
 	 * @param request
 	 */
 	@RequestMapping(value="/editjobinfo", method = RequestMethod.POST)
-	public void editJobInfo(HttpServletRequest request) {
+	public ModelAndView editJobInfo(HttpServletRequest request) {
 		int jid = Integer.parseInt(request.getParameter("jid"));
 		String jobTitle = request.getParameter("title");
 		String desc = request.getParameter("description");
@@ -278,6 +278,10 @@ public class JobsController {
 		job.setDescription(desc);
 		job.setPrice(price);
 		job.setType(type);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("job", job);
+		mv.setViewName("job.jsp");
+		return mv;
 	}
 
 	/**

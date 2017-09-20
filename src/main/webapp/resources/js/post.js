@@ -19,9 +19,6 @@ $(document).ready(
 						price : $("#price").val(),
 						type : $("#type").val(),
 						location : $("#loc").val(),
-					},
-					success : function() {
-						window.location='https://jh-studio.herokuapp.com/job?jid=' + jid;
 					}
 				});
 			});
