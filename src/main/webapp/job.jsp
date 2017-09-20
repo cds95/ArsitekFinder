@@ -59,7 +59,7 @@
       <div class="jumbotron">
          <div class="container-fluid">
             <p>Job ID: <span id="jid">${job.jid}</span></p>
-             <a class="edit" href="https://jh-studio.herokuapp.com/editjob"><span class="glyphicon glyphicon-pencil"></span></a>
+             <a class="edit" href="https://jh-studio.herokuapp.com/editjob?jid=${job.jid}"><span class="glyphicon glyphicon-pencil"></span></a>
             <div class="description">
                <div class="projectDescription" >
                   <h5 class="headers">Project Description</h5>
