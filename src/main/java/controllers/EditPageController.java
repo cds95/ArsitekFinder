@@ -22,7 +22,6 @@ import Entities.User;
 @Controller
 @RequestMapping("/edit")
 public class EditPageController {
-	
 	/**
 	 * Updates user location when location is still not set
 	 * @param session

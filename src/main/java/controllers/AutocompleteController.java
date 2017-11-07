@@ -20,10 +20,7 @@ public class AutocompleteController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("gettags")
 	public void getTags(HttpSession session, HttpServletResponse response) throws IOException {
-		DatabaseManager manager = (DatabaseManager) session.getAttribute("manager");
-		if(manager == null) {
-			manager = new DatabaseManager();
-		}
+		DatabaseManager manager = DatabaseManager.getInstance();
 		List<Tags> tags = manager.getTags();
 		List<String> tagNames = new LinkedList<String>();
 		for(Tags tag : tags) {

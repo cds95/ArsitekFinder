@@ -42,11 +42,7 @@ public class JobsController {
 	 */
 	@RequestMapping("jobs/filter")
 	public void filter(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
-		if (manager == null) {
-			manager = new DatabaseManager(); // Takes care of case when this is
-												// first page user visits
-		}
+		DatabaseManager manager = DatabaseManager.getInstance();
 		String type = request.getParameter("type");
 		List<Job> jobs;
 		if (type.equals("All Jobs")) {
@@ -106,7 +102,7 @@ public class JobsController {
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	public void removeJob(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
+		DatabaseManager manager = DatabaseManager.getInstance();
 		int jid = Integer.parseInt(request.getParameter("jid"));
 		String type = request.getParameter("type");
 		Job job = manager.getJob(jid);
@@ -128,7 +124,7 @@ public class JobsController {
 	@RequestMapping(value = "job/remove", method = RequestMethod.POST)
 	public void removeJobTag(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
+		DatabaseManager manager = DatabaseManager.getInstance();
 		int tid = Integer.parseInt(request.getParameter("id"));
 		Tags tag = manager.getTag(tid);
 		int jid = Integer.parseInt(request.getParameter("jid"));
@@ -157,12 +153,8 @@ public class JobsController {
 		int price = Integer.parseInt(request.getParameter("price"));
 		String type = request.getParameter("type");
 		Job job = createJob(jobTitle, desc, price, type);
-		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
+		DatabaseManager manager = DatabaseManager.getInstance();
 		User user = (User) request.getSession().getAttribute("user");
-		if (manager == null) {
-			manager = new DatabaseManager();
-			request.getSession().setAttribute("manager", manager);
-		}
 		manager.addJob(job, user);
 		String skills = request.getParameter("skills");
 		String[] skillSet = skills.split(",");
@@ -203,10 +195,7 @@ public class JobsController {
 	 */
 	public void saveFile(User user, HttpServletRequest request)
 			throws Exception {
-		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
-		if (manager == null) {
-			manager = new DatabaseManager(); // Takes care of case when this is	first page user visits
-		}
+		DatabaseManager manager = DatabaseManager.getInstance();
 		ServletFileUpload sfu = new ServletFileUpload(new DiskFileItemFactory());
 		List<FileItem> files = sfu.parseRequest(request);
 		FileItem f1 = files.get(0);
@@ -228,10 +217,7 @@ public class JobsController {
 	public void getResume(@RequestParam("aid") int id, HttpSession session) throws FileNotFoundException, StorageException {
 		String home = System.getProperty("user.home");
 		FileManager fileManager = new FileManager();
-		DatabaseManager manager = (DatabaseManager) session.getAttribute("manager");
-		if(manager == null){
-			manager = new DatabaseManager();
-		}
+		DatabaseManager manager = DatabaseManager.getInstance();
 		String fileName = manager.getApplicationFile(id);
 		fileManager.downloadFromAzure(home + "\\Downloads\\", fileName);
 	}
@@ -246,10 +232,7 @@ public class JobsController {
 	 */
 	@RequestMapping(value="/editjob")
 	public ModelAndView updateJob(@RequestParam("jid") int id, HttpSession session) throws FileNotFoundException, StorageException {
-		DatabaseManager manager = (DatabaseManager) session.getAttribute("manager");
-		if(manager == null){
-			manager = new DatabaseManager();
-		}
+		DatabaseManager manager = DatabaseManager.getInstance();
 		Job job = manager.getJob(id);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("job", job);
@@ -269,10 +252,7 @@ public class JobsController {
 		String title = request.getParameter("title");
 		String type = request.getParameter("type");
 		int price = Integer.parseInt(request.getParameter("price"));
-		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
-		if(manager == null) {
-			manager = new DatabaseManager();
-		}
+		DatabaseManager manager = DatabaseManager.getInstance();
 		Job job = manager.getJob(jid);
 		manager.updateJob(job, title, desc, type, price);
 		response.getWriter().write("success");

@@ -32,12 +32,7 @@ public class MainController {
 	
 	public static final String WEBSITEEMAIL = System.getenv("WEBSITE_EMAIL");
 	public static final String TARGETEMAIL = System.getenv("TARGET_EMAIL");
-	private DatabaseManager manager;
 	private User sessionUser; //Current session user object
-	
-	public MainController() {
-		this.manager = new DatabaseManager();
-	}
 	
 	@RequestMapping("login")
 	public String goToLogin() {
@@ -58,6 +53,7 @@ public class MainController {
 	public ModelAndView goToJobs(HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		List<Job> jobs;
+		DatabaseManager manager = DatabaseManager.getInstance();
 		if(user == null) {
 			jobs = manager.getOpenJobs();
 		} else {
@@ -76,6 +72,7 @@ public class MainController {
 	
 	@RequestMapping("post")
 	public ModelAndView goToPost() {
+		DatabaseManager manager = DatabaseManager.getInstance();
 		List<Tags> tags = manager.getTags();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("tags", tags);
@@ -94,13 +91,14 @@ public class MainController {
 	@RequestMapping(value="logging", method = RequestMethod.POST)
 	@ResponseBody
 	public String logIn(HttpSession session, @RequestParam("username") String username, @RequestParam("password") String password) {
+		DatabaseManager manager = DatabaseManager.getInstance();
 		String correctPassword = manager.getUserPassword(username);
 		String res;
 		if(correctPassword != null && Security.compare(password, correctPassword)) {
-			User user = this.manager.getUser(username);
+			User user = manager.getUser(username);
 			this.setUser(user);
 			session.setAttribute("user", this.sessionUser);
-			session.setAttribute("manager", this.manager);
+			session.setAttribute("manager", manager);
 			res = "pass";
 		} else {
 			res = "fail";
@@ -110,6 +108,7 @@ public class MainController {
 	
 	@RequestMapping("profile")
 	public ModelAndView showProfile(HttpSession session, @RequestParam("handle") String handle) {
+		DatabaseManager manager = DatabaseManager.getInstance();
 		List<Tags> tags = manager.getTags();
 		User user = manager.getUser(handle);
 		if(user == null) {
@@ -124,9 +123,10 @@ public class MainController {
 	
 	@RequestMapping("job")
 	public ModelAndView getJobInfo(@RequestParam("jid") String jid) {
+		DatabaseManager manager = DatabaseManager.getInstance();
 		List<Tags> tags = manager.getTags();
 		int id = Integer.parseInt(jid);
-		Job job = this.manager.getJob(id);
+		Job job = manager.getJob(id);
 		List<Applicant> applicants = manager.getJobApplications(id);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("job", job);

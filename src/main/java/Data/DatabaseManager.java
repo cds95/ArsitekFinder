@@ -29,12 +29,20 @@ public class DatabaseManager {
 	private Configuration con;
 	private SessionFactory sessionFact;
 	private Session session;
+	private static DatabaseManager manager;
+	
+	public static DatabaseManager getInstance() {
+		if(manager == null) {
+			manager = new DatabaseManager();
+		}
+		return manager;
+	}
 
 	/**
 	 * Creates a new instance of the DatabaseManager by making a connection to
 	 * MySQL Database and opens a session
 	 */
-	public DatabaseManager() {
+	private DatabaseManager() {
 		this.con = new Configuration().configure();
 		this.con.addAnnotatedClass(Job.class);
 		this.con.addAnnotatedClass(Location.class);

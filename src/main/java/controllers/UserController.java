@@ -57,11 +57,7 @@ public class UserController {
 	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public void registerUser(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		DatabaseManager manager = (DatabaseManager) request.getSession().getAttribute("manager");
-		if (manager == null) {
-			manager = new DatabaseManager(); // Takes care of case when this is
-												// first page user visits
-		}
+		DatabaseManager manager = DatabaseManager.getInstance();
 		String first = request.getParameter("first");
 		String last = request.getParameter("last");
 		String handle = request.getParameter("handle");
